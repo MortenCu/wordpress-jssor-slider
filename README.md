@@ -1,12 +1,11 @@
 # Wordpress Jssor Slider Plugin #
-Contributors: PhP Centre
-Tags:  jssor slider, wordpress slider, wordpress slideshow, responsive, responsive slider, responsive slides, slider, slideshow
-Donate link: http://andidittrich.de/go/enlighterjs
-Requires at least: 3.5
-Tested up to: 3.9.1
-Stable tag: 1.0
-License: GNU-License
-License URI: www.gnu.org/licenses
+Contributors: PhP Centre <br/>
+Tags:  jssor slider, wordpress slider, wordpress slideshow, responsive, responsive slider, responsive slides, slider, slideshow<br/>
+Requires at least: 3.5 <br/>
+Tested up to: 3.9.1 <br/>
+Stable tag: 1.0 <br/>
+License: GNU-License <br/>
+License URI: www.gnu.org/licenses <br/>
 
 Easy to use WordPress Responsive Slider plugin.
 
