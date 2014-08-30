@@ -39,7 +39,7 @@ class JssorSliderPlugin{
 		$this->register_ajax_calls();
 	}
 	
-				
+	
 	/**
 	*Register the [jssorslider] shortcode.
 	*/
@@ -71,7 +71,7 @@ class JssorSliderPlugin{
 		$menu['edit_page'] = add_submenu_page("", "", "", "read", "save_slider", array($this,'save_slider'));
 		$menu['prev1_page'] = add_submenu_page("", "Slide Preview", "Slide Preview", "read", "slide_preview",array($this,'slide_preview'));
 		$menu['prev2_page'] = add_submenu_page("", "Caption Preview", "Caption Preview", "read", "caption_preview", array($this,'caption_preview'));
-					
+		
 		foreach($menu as $key => $value){
 			if($key	== 'prev1_page'){
 				/* Load script only on this page. */
@@ -83,9 +83,9 @@ class JssorSliderPlugin{
 			/* Load the rest of the scripts on all of our admin pages only. */
 			add_action('load-'.$value, array($this,'load_admin_scripts'));
 		}
-				
+		
 	}
-				
+	
 	public function	load_prev1_js(){
 		/* Too early to enqueue script,register against the proper action */	
 		add_action('admin_enqueue_scripts', array($this,'enqueue_prev1_js'));
@@ -119,15 +119,15 @@ class JssorSliderPlugin{
 	* Functions for	creating admin menus
 	*/
 	public function	jssor_slider(){
-					
+		
 		include_once JSSOR_SL_PLUGIN_DIR . "/views/dashboard.php";
 	}
-				
+	
 	public function save_slider(){
-				
+		
 		include_once JSSOR_SL_PLUGIN_DIR . "/views/edit-slider.php";
 	}
-					
+	
 	public function slide_preview(){
 		
 		include_once JSSOR_SL_PLUGIN_DIR . "/views/slide_preview.php";
@@ -142,7 +142,7 @@ class JssorSliderPlugin{
 	* Execute on plugin activate
 	*/
 	public static function plugin_install_script(){
-				
+		
 		include_once JSSOR_SL_PLUGIN_DIR . "/lib/install-script.php";
 	}
 	
@@ -150,7 +150,7 @@ class JssorSliderPlugin{
 	* Execute on plugin uninstall
 	*/
 	public static function plugin_uninstall_script(){
-				
+		
 		include_once JSSOR_SL_PLUGIN_DIR . "/lib/uninstall-script.php";
 	}
 	
@@ -158,7 +158,7 @@ class JssorSliderPlugin{
 	* Register admin JavaScript
 	*/
 	public function	register_admin_scripts(){
-								
+		
 		wp_enqueue_script("jquery-ui-core", array('jquery'));
 		wp_enqueue_script("jquery-ui-sortable",	array('jquery','jquery-ui-core'));
 		wp_enqueue_script("jquery.dataTables.min.js", JSSOR_SL_PLUGIN_URL . "/assets/js/jquery.dataTables.min.js",array('jquery'),JSSORSLIDER_VERSION);
@@ -167,16 +167,16 @@ class JssorSliderPlugin{
 		wp_enqueue_script("jquery.plupload.queue.js", JSSOR_SL_PLUGIN_URL . "/assets/js/jquery.plupload.queue.js",array('jquery'),JSSORSLIDER_VERSION);
 		wp_enqueue_script("bootstrap.js", JSSOR_SL_PLUGIN_URL .	"/assets/js/bootstrap.js",array('jquery'),JSSORSLIDER_VERSION);
 		wp_enqueue_script("tipsy.js", JSSOR_SL_PLUGIN_URL . "/assets/js/jquery.tipsy.js",array('jquery'),JSSORSLIDER_VERSION);
-				
+		
 	}
 	
 	/**
 	* Register admin JavaScript for	prev1_page
 	*/
 	public function	enqueue_prev1_js(){
-					
+		
 		wp_enqueue_script("jssor.transition1.js", JSSOR_SL_PLUGIN_URL .	"/assets/js/slideshow-transition.min.js");
-					
+		
 	}
 	
 	/**
@@ -185,16 +185,16 @@ class JssorSliderPlugin{
 	public function	enqueue_prev2_js(){
 	
 		wp_enqueue_script("jssor.transition2.js", JSSOR_SL_PLUGIN_URL . "/assets/js/caption-transition.min.js");
-				
+		
 	}
 	
 	/**
 	* Register frontend script for slider
 	*/
 	public function frontend_scripts(){
-					
+		
 		wp_enqueue_script("jssor.core.js", JSSOR_SL_PLUGIN_URL . "/assets/js/jssor.slider.mini.js",array('jquery'),JSSORSLIDER_VERSION);
-								
+		
 	}
 	
 	/**
@@ -207,9 +207,9 @@ class JssorSliderPlugin{
 		wp_enqueue_style("font-awesome.css", JSSOR_SL_PLUGIN_URL . "/assets/css/font-awesome/css/font-awesome.css");
 		wp_enqueue_style("system-message.css",	JSSOR_SL_PLUGIN_URL . "/assets/css/system-message.css");
 		wp_enqueue_style("tipsy.css", JSSOR_SL_PLUGIN_URL	. "/assets/css/tipsy.css");
-			
+		
 	}
-				
+	
 	/**
 	* Register ajax	based function to be called on action type
 	*/
@@ -219,21 +219,21 @@ class JssorSliderPlugin{
 				case "add_new_slider_library" :
 					add_action("admin_init","jssor_slider_library");
 					function jssor_slider_library(){
-												
+						
 						include_once JSSOR_SL_PLUGIN_DIR . "/lib/add-new-slider-class.php";
 					}
 					break;
 				case "upload_library" :
 					add_action("admin_init","upload_library");
 					function ad_library(){
-												
+						
 						include_once JSSOR_SL_PLUGIN_DIR . "/lib/upload.php";
 					}
 					break;
 			}
 		}	
 	}
-			
+	
 	/**
 	* Append the 'Add Slider' button to selected admin pages
 	*/
@@ -243,22 +243,21 @@ class JssorSliderPlugin{
 		
 		// Only run in post/page creation and edit screens
 		if (in_array($pagenow, array('post.php','page.php','post-new.php','post-edit.php'))){
-											
+			
 			$context .= "<a	href=\"#TB_inline?width=500&height=600&inlineId=choose-jssor-slider\"		
 			class=\"button thickbox\" title=\"" . __("Add Slider using Jssor Slider", jssor_slider) . "\">
 			<span style=\"background: url(".JSSOR_SL_PLUGIN_URL."/assets/images/icon.png) no-repeat top left;
 			display:inline-block;height:16px;margin:0 2px 0 0;vertical-align:sub;width:16px\"></span> Add Slider </a>";
 		}				
 		return	$context;	
-				
+		
 	}
 
-				
 	/**
 	* Append the 'Choose Jssor Slider' thickbox content to the bottom of selected admin pages
 	*/
 	public function	jssorslider_admin_footer(){
-								
+		
 		global	$pagenow;
 
 		/* Only	run in	post/page creation and edit screens */
@@ -267,25 +266,23 @@ class JssorSliderPlugin{
 		}
 	}
 
-			
-			
-			
+	
 	/**
 	* Shortcode used to display slideshow
 	*/
 	public function	register_shortcode($atts){
-								
+		
 		if(!isset($atts['id'])){
 			return	false;
 		}
-			
+		
 		$slider_id = $atts['id'];
 		
 		$this->frontend_scripts();
-				
+		
 		return	self::extract_shortcode($slider_id);
 	}
-				
+	
 	/*
 	* @return string HTML output of	the shortcode
 	*/
@@ -295,7 +292,7 @@ class JssorSliderPlugin{
 		global	$wpdb;
 		
 		require	JSSOR_SL_PLUGIN_DIR . "/lib/settings.php";
-								
+		
 		require_once JSSOR_SL_PLUGIN_DIR . "/front_views/jssorslider.helper.class.php";
 	
 		include	JSSOR_SL_PLUGIN_DIR . "/front_views/slide_show.php";
