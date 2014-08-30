@@ -72,17 +72,17 @@ class JssorSliderPlugin{
 		$menu['prev1_page'] = add_submenu_page("", "Slide Preview", "Slide Preview", "read", "slide_preview",array($this,'slide_preview'));
 		$menu['prev2_page'] = add_submenu_page("", "Caption Preview", "Caption Preview", "read", "caption_preview", array($this,'caption_preview'));
 					
-			foreach($menu as $key => $value){
-				if($key	== 'prev1_page'){
-					/* Load script only on this page. */
-					add_action('load-'.$value, array($this,'load_prev1_js'));
-				}elseif($key == 'prev2_page'){
-					/* Load script  only on this page. */
-					add_action('load-'.$value, array($this,'load_prev2_js' ));
-				}
-				       /* Load the rest of the scripts on all of our admin pages only. */
-					add_action('load-'.$value, array($this,'load_admin_scripts'));
+		foreach($menu as $key => $value){
+			if($key	== 'prev1_page'){
+				/* Load script only on this page. */
+				add_action('load-'.$value, array($this,'load_prev1_js'));
+			}elseif($key == 'prev2_page'){
+				/* Load script  only on this page. */
+				add_action('load-'.$value, array($this,'load_prev2_js' ));
 			}
+			/* Load the rest of the scripts on all of our admin pages only. */
+			add_action('load-'.$value, array($this,'load_admin_scripts'));
+		}
 				
 	}
 				
@@ -159,8 +159,8 @@ class JssorSliderPlugin{
 	*/
 	public function	register_admin_scripts(){
 								
-		wp_enqueue_script('jquery-ui-core', array('jquery'));
-		wp_enqueue_script('jquery-ui-sortable',	array('jquery','jquery-ui-core'));
+		wp_enqueue_script("jquery-ui-core", array('jquery'));
+		wp_enqueue_script("jquery-ui-sortable",	array('jquery','jquery-ui-core'));
 		wp_enqueue_script("jquery.dataTables.min.js", JSSOR_SL_PLUGIN_URL . "/assets/js/jquery.dataTables.min.js",array('jquery'),JSSORSLIDER_VERSION);
 		wp_enqueue_script("jquery.validate.min.js", JSSOR_SL_PLUGIN_URL . "/assets/js/jquery.validate.min.js",array('jquery'),JSSORSLIDER_VERSION);
 		wp_enqueue_script("plupload.full.min.js", JSSOR_SL_PLUGIN_URL . "/assets/js/plupload.full.min.js",array('jquery'),JSSORSLIDER_VERSION);
