@@ -160,7 +160,7 @@ class JssorSliderPlugin {
 	public function	register_admin_scripts() {
 		
 		wp_enqueue_script( 'jquery-ui-core', array( 'jquery' ) );
-		wp_enqueue_script( 'jquery-ui-sortable',	array( 'jquery', 'jquery-ui-core' ) );
+		wp_enqueue_script( 'jquery-ui-sortable', array( 'jquery', 'jquery-ui-core' ) );
 		wp_enqueue_script( 'jquery.dataTables.min.js', JSSOR_SL_PLUGIN_URL . '/assets/js/jquery.dataTables.min.js', array( 'jquery' ), JSSORSLIDER_VERSION);
 		wp_enqueue_script( 'jquery.validate.min.js', JSSOR_SL_PLUGIN_URL . '/assets/js/jquery.validate.min.js', array( 'jquery' ), JSSORSLIDER_VERSION);
 		wp_enqueue_script( 'plupload.full.min.js', JSSOR_SL_PLUGIN_URL . '/assets/js/plupload.full.min.js', array( 'jquery' ), JSSORSLIDER_VERSION);
@@ -206,7 +206,7 @@ class JssorSliderPlugin {
 		wp_enqueue_style( 'stylesheet.css', JSSOR_SL_PLUGIN_URL . '/assets/css/stylesheet.css' );
 		wp_enqueue_style( 'font-awesome.css', JSSOR_SL_PLUGIN_URL . '/assets/css/font-awesome/css/font-awesome.css' );
 		wp_enqueue_style( 'system-message.css',	JSSOR_SL_PLUGIN_URL . '/assets/css/system-message.css' );
-		wp_enqueue_style( 'tipsy.css', JSSOR_SL_PLUGIN_URL	. '/assets/css/tipsy.css' );
+		wp_enqueue_style( 'tipsy.css', JSSOR_SL_PLUGIN_URL . '/assets/css/tipsy.css' );
 		
 	}
 	
