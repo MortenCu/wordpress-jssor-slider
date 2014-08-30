@@ -11,7 +11,7 @@ global $wpdb;
 	);
 	
 ?>
-    <div id="poststuff" style="width: 99% !important;">
+   <div id="poststuff" style="width: 99% !important;">
 	    <div id="post-body" class="metabox-holder columns-3">
 		    <div id="postbox-container-2" class="postbox-container">
 		        <div id="advanced" class="meta-box-sortables">
