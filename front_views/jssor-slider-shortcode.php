@@ -1,12 +1,12 @@
-<div  id="choose-jssor-slider"	style="display:	none;">
-	<div	class="fluid-layout responsive">
+<div id="choose-jssor-slider" style="display:none;">
+	<div class="fluid-layout responsive">
 		<div>
-			<h3	class="gallery-shortcode-label"><?php	_e("Insert Jssor Slider Shortcode",jssor_slider);	?></h3>
+			<h3 class="gallery-shortcode-label"><?php _e("Insert Jssor Slider Shortcode",jssor_slider); ?></h3>
 			<span>
-				<?php	_e("Select a slider below to add it to your post or page.",jssor_slider);	?>
+				<?php _e("Select a slider below to add it to your post or page.",jssor_slider);	?>
 			</span>
 		</div>
-		<div class="layout-span12"	style="padding:15px	15px 0 0;">
+		<div class="layout-span12" style="padding:15px 15px 0 0;">
 			<div class="layout-control-group" id="ux_select_album" style="display:block;">
 				<select	id="add_slider_id" class="layout-span5">
 					<option	value=""><?php	_e("Select a Slider",jssor_slider); ?></option>
@@ -29,7 +29,7 @@
 					}
 					?>					
 				</select>
-				<button	style="height:30px;" class='button primary' id='insertJssorSlider'>Insert Slideshow</button>
+				<button	style='height:30px;' class='button primary' id='insertJssorSlider'>Insert Slideshow</button>
 			</div>												
 		</div>
 	</div>
