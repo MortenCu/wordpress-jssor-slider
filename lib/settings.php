@@ -18,7 +18,7 @@
 		'a16' => 'Arrow-16',
 		'a17' => 'Arrow-17',
 		'a18' => 'Arrow-18',
-		'a19' => 'Arrow-19',
+		'a19' => 'Arrow-19'
 	);
 	
 	$BulletSkin = array(
