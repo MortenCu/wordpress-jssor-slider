@@ -1,6 +1,6 @@
 <?php
-global $wpdb;
-require_once(ABSPATH . "wp-admin/includes/upgrade.php");
+	global $wpdb;
+	require_once(ABSPATH . "wp-admin/includes/upgrade.php");
     
 	if (!is_dir(JSSOR_MAIN_DIR)) {
 		wp_mkdir_p(JSSOR_MAIN_DIR);
