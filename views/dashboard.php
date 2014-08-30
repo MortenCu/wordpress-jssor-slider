@@ -26,7 +26,7 @@ global $wpdb;
 								    <div class="layout-span12">
 									    <div class="widget-layout">
 										    <div class="widget-layout-title">
-											    <h4><?php _e( "Existing Slider Overview", jssor_slider ); ?></h4>
+											    <h4><?php _e("Existing Slider Overview", jssor_slider ); ?></h4>
 										    </div>
 										    <div class="widget-layout-body">
 							                    <table class="table table-striped " id="data-table-slider">
