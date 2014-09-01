@@ -7,6 +7,14 @@
     vertical-align: sub;
     width: 16px;
 }
+
+.jssor-shortcode-label {
+	color:#5A5A5A!important; 
+	font-family:Georgia,Times New Roman,Times,serif!important; 
+	font-size:1.8em!important; 
+	font-weight:normal!important;
+}
+
 .separator-doubled {
     padding: 0;
     height: 0;
@@ -16,6 +24,7 @@
     text-align: center;
     margin-top: 10px;
 }
+
 .separator-single {
     padding: 0;
     height: 0;
@@ -2382,7 +2391,6 @@ legend + .layout-control-group {
 
 }
 
-
 .widget-layout-title .tab-title-slider {
    background: transparent;
    padding: 3px 6px 3px;
@@ -2467,8 +2475,6 @@ legend + .layout-control-group {
 	box-shadow:none;
 }
 
-
-
 .layout-control-group .layout-controls input:focus{
     outline: none;
     outline-style: none;
@@ -2505,11 +2511,10 @@ legend + .layout-control-group {
     padding: 3px 5px;
     cursor: move;
 }
+
 #slide_table .thumb:hover .delete-slide {
     display: block
 }
-
-
 
 #slide_table tr.slide:nth-child(even) {
     background: white;
@@ -2529,6 +2534,7 @@ legend + .layout-control-group {
     margin: 0 0 10px 0;
     border-bottom: 1px solid #ccc;
 }
+
 .col-2 ul.tabs li{
     margin: 0 0 0 5px;
     cursor: pointer;
@@ -2540,6 +2546,7 @@ legend + .layout-control-group {
     top: 1px;
     border: 1px solid transparent;
 }
+
 ul.tabs li.selected{
     font-weight: bold;
     color: #666;
