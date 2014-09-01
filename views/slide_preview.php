@@ -1,5 +1,3 @@
-<?php
-?>
 
     <table align="center" border="0" cellspacing="0" cellpadding="0" style="width: 960px; height: 60px;">
         <tr>
