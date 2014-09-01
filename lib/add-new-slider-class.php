@@ -1,89 +1,91 @@
 <?php
-	require_once JSSOR_SL_PLUGIN_DIR . "/lib/settings.php";
+	require_once JSSOR_SL_PLUGIN_DIR . '/lib/settings.php';
+	global $wpdb;
 	$Caption_T = $Caption_Transition;
 	$Slide_T = $Slide_Transition;
-	global $wpdb;
 	$dynamicArray = array();
 
-		if (isset($_REQUEST["param"])) {
-			if ($_REQUEST["param"] == "add_new_dynamic_row_for_slide") {
-				$img_path = esc_attr($_REQUEST["img_path"]);
-				$img_name = esc_attr($_REQUEST["img_name"]);
-				$slideid = intval($_REQUEST["slideid"]);
+		if ( isset( $_REQUEST['param'] ) ) {
+			if ( $_REQUEST['param'] == 'add_new_dynamic_row_for_slide' ) {
 				
-				process_image_upload($img_path, 150,150);
+				$img_path = esc_attr( $_REQUEST['img_path'] );
+				$img_name = esc_attr($_REQUEST['img_name'] );
+				$slideid = intval( $_REQUEST['slideid'] );
+				
+				process_image_upload( $img_path, 150, 150 );
 			
 			
-				$select1 = caption_select($Caption_T);
-				$select2 = slide_select($Slide_T);
-				$column1 = "<tr class=\"slide\" id=\"slid_".$slideid."\">
-								<td style=\"width:152px;\" class=\"col-1\">
-									<div name=\"slide_".$slideid." \" class=\"thumb\" style=\"background-image: url(".JSSOR_SL_THUMB_SMALL_URL . $img_path .");\" >
-										<a class=\"delete-slide\"	onclick=\"deleteImage(this);\" controlid =\"" . $slideid . "\">x</a>
-										<span class=\"slide-details\">Image Slide</span>
+				$select1 = caption_select( $Caption_T );
+				$select2 = slide_select( $Slide_T );
+				$column1 = '<tr class="slide" id="slid_'.$slideid.'">
+								<td style="width:152px;" class="col-1">
+									<div name="slide_'.$slideid.'" class="thumb" style="background-image: url(' . JSSOR_SL_THUMB_SMALL_URL . $img_path . ' );" >
+										<a class="delete-slide"	onclick="deleteImage(this);" controlid ="' . $slideid . '">x</a>
+										<span class="slide-details">Image Slide</span>
 									</div>
-								</td>";	
-				array_push($dynamicArray, $column1);
+								</td>';	
+				array_push( $dynamicArray, $column1 );
 			
-				$column2 = 		"<td class=\"col-2\">
-									<ul class=\"tabs\">
-										<li class=\"selected\" rel=\"tab-0\">General</li>
-										<li rel=\"tab-1\"> Transition</li>
+				$column2 = 		'<td class="col-2">
+									<ul class="tabs">
+										<li class="selected" rel="tab-0">General</li>
+										<li rel="tab-1"> Transition</li>
 									</ul>
-									<div class=\"tabs-content\">
-										<div class=\"tab tab-0\">
-											<input type=\"text\" style=\"margin-bottom:5px;\" class=\"slide_title\" id=\"slide_title\" placeholder=\"Caption\"></input>
-											<textarea	id=\"slide_desc\" placeholder=\"Description\"></textarea>
-											<input type=\"text\" class=\"slide_url\"	id=\"slide_url\" placeholder=\"URL\" />
-											<input type=\"hidden\" id=\"slide_id\" value=\"".$slideid."\" />
+									<div class="tabs-content">
+										<div class="tab tab-0">
+											<input type="text" style="margin-bottom:5px;" class="slide_title" id="slide_title" placeholder="Caption"></input>
+											<textarea	id="slide_desc" placeholder="Description"></textarea>
+											<input type="text" class="slide_url"	id="slide_url" placeholder="URL" />
+											<input type="hidden" id="slide_id" value="' . $slideid . '" />
 										</div>
-										<div class=\"tab tab-1\" style=\"display:none\">
-											<div id=\"caption_div\" style=\"margin:27px 0 26px 0;\">
-												<div class=\"caption_trans\" >
-													<label class=\"trans_label\">Caption In</label>
-													<select id=\"cap_trans_in\" name=\"cap_trans_in\" >
-														".$select1."
+										<div class="tab tab-1" style="display:none">
+											<div id="caption_div" style="margin:27px 0 26px 0;">
+												<div class="caption_trans" >
+													<label class="trans_label">Caption In</label>
+													<select id="cap_trans_in" name="cap_trans_in" >
+														' . $select1 . '
 													</select>
 												</div>
-												<div class=\"caption_trans\" >
-													<label class=\"trans_label\">Caption Out</label>
-													<select id=\"cap_trans_out\" name=\"cap_trans_out\" >
-														".$select1."
-													</select>
-												</div>
-											</div>
-											<div id=\"desc_div\" style=\"margin:18px 0 18px 0;\">
-												<div class=\"desc_trans\">
-													<label class=\"trans_label\">Desc In</label>
-													<select id=\"desc_trans_in\" name=\"desc_trans_in\">
-														".$select1."
-													</select>
-												</div>
-												<div class=\"desc_trans\">
-													<label class=\"trans_label\">DescOut</label>
-													<select id=\"desc_trans_out\" name=\"desc_trans_out\">
-														".$select1."
+												<div class="caption_trans" >
+													<label class="trans_label">Caption Out</label>
+													<select id="cap_trans_out" name="cap_trans_out" >
+														' . $select1 . '
 													</select>
 												</div>
 											</div>
-											<div id=\"slide_div\" style=\"margin:18px 0 0 0;\">
-												<label class=\"trans_label\">Slide</label>
-												<select style=\"width:77%;\" id=\"slide_trans\" name=\"slide_trans\">
-													".$select2."
+											<div id="desc_div" style="margin:18px 0 18px 0;">
+												<div class="desc_trans">
+													<label class="trans_label">Desc In</label>
+													<select id="desc_trans_in" name="desc_trans_in">
+														' . $select1 . '
+													</select>
+												</div>
+												<div class="desc_trans">
+													<label class="trans_label">DescOut</label>
+													<select id="desc_trans_out" name="desc_trans_out">
+														' . $select1 . '
+													</select>
+												</div>
+											</div>
+											<div id="slide_div" style="margin:18px 0 0 0;">
+												<label class="trans_label">Slide</label>
+												<select style="width:77%;" id="slide_trans" name="slide_trans">
+													' . $select2 . '
 												</select>
 											</div>
 										</div>
 									</div>
 								</td>
-							</tr>";	
-				array_push($dynamicArray, $column2);
-				echo json_encode($dynamicArray);
+							</tr>';	
+				array_push( $dynamicArray, $column2 );
+				echo json_encode( $dynamicArray );
 				die();
 			}
-			else if ($_REQUEST["param"] == "add_slide") {
-				$ux_sliderid = intval($_REQUEST["slider_id"]);
-				$ux_img_name = esc_attr(html_entity_decode($_REQUEST["imagename"]));
-				$img_gb_path = esc_attr($_REQUEST["img_gb_path"]);
+			else if ( $_REQUEST['param'] == 'add_slide' ) {
+				
+				$ux_sliderid = intval( $_REQUEST['slider_id'] );
+				$ux_img_name = esc_attr( html_entity_decode( $_REQUEST['imagename'] ) );
+				$img_gb_path = esc_attr( $_REQUEST['img_gb_path'] );
 	
 				$wpdb->query
 					(
@@ -113,12 +115,12 @@
 					
 				die();
 			}
-			else if ($_REQUEST["param"] == "update_slider") {
+			else if ( $_REQUEST['param'] == 'update_slider' ) {
 			
-				$sliderId = intval($_REQUEST["sliderid"]);
-				$ux_edit_slider_name1 = htmlspecialchars(esc_attr($_REQUEST["edit_slider_name"]));
-				$ux_edit_slider_name = ($ux_edit_slider_name1 == "") ? "Untitled Slider" : $ux_edit_slider_name1;
-				$sliderSets = json_decode(stripcslashes($_REQUEST["slider_settings"]),true);;
+				$sliderId = intval( $_REQUEST['sliderid'] );
+				$ux_edit_slider_name1 = htmlspecialchars( esc_attr( $_REQUEST['edit_slider_name'] ) );
+				$ux_edit_slider_name = ( $ux_edit_slider_name1 == '' ) ? 'Untitled Slider' : $ux_edit_slider_name1;
+				$sliderSets = json_decode( stripcslashes( $_REQUEST['slider_settings'] ), true );
 			
 				$sliderSettings= array(
 					'slider_width' => $sliderSets[0],
@@ -141,7 +143,7 @@
 					'responsive' => $sliderSets[17]
 				);
 			 
-				$sliderSettings2 = serialize($sliderSettings);
+				$sliderSettings2 = serialize( $sliderSettings );
 				$wpdb->query
 					(
 						$wpdb->prepare
@@ -153,12 +155,11 @@
 							)
 					);
 				die();
-			
 			}
-			else if ($_REQUEST["param"] == "update_slide") {
+			else if ( $_REQUEST['param'] == 'update_slide' ) {
 			
-				$slider_data = json_decode(stripcslashes($_REQUEST["slider_data"]),true);
-				foreach($slider_data as $field) {
+				$slider_data = json_decode( stripcslashes( $_REQUEST['slider_data'] ), true);
+				foreach( $slider_data as $field ) {
 						
 					$wpdb->query
 						(
@@ -180,9 +181,9 @@
 				}
 				die();
 			}
-			else if ($_REQUEST["param"] == "delete_slide") {
+			else if ( $_REQUEST['param'] == 'delete_slide' ) {
 				
-				$slideId = intval($_REQUEST["slide_id"]);
+				$slideId = intval( $_REQUEST['slide_id'] );
 				$slide_img = $wpdb->get_var
 								(
 									$wpdb->prepare
@@ -200,13 +201,13 @@
 							)
 					);
 				
-				@unlink(JSSOR_MAIN_UPLOAD_DIR.$slide_img);
-				@unlink(JSSOR_MAIN_THUMB_DIR.$slide_img);
+				@unlink( JSSOR_MAIN_UPLOAD_DIR.$slide_img );
+				@unlink( JSSOR_MAIN_THUMB_DIR.$slide_img );
 			
 			}
-			else if ($_REQUEST["param"] == "Delete_slider") {
+			else if ( $_REQUEST['param'] == 'Delete_slider' ) {
 			
-				$slider_id = intval($_REQUEST["slider_id"]);
+				$slider_id = intval( $_REQUEST['slider_id'] );
 				$slides = $wpdb->get_results
 							(
 								$wpdb->prepare
@@ -216,9 +217,9 @@
 									)
 							);
 			
-				for ($flag = 0; $flag < count($slides); $flag++) {
-					@unlink(JSSOR_MAIN_UPLOAD_DIR.$slides[$flag]->thumbnail_url);
-					@unlink(JSSOR_MAIN_THUMB_DIR.$slides[$flag]->thumbnail_url);
+				for ( $flag = 0; $flag < count($slides); $flag++ ) {
+					@unlink( JSSOR_MAIN_UPLOAD_DIR.$slides[$flag]->thumbnail_url );
+					@unlink( JSSOR_MAIN_THUMB_DIR.$slides[$flag]->thumbnail_url );
 				}
 			
 				$wpdb->query
@@ -240,10 +241,10 @@
 					);
 				die();
 			}
-			else if ($_REQUEST["param"] == "update_order") {
+			else if ( $_REQUEST['param'] == 'update_order' ) {
 		
-				parse_str($_REQUEST['order'], $slideOrder);
-				foreach ($slideOrder['slid'] as $key => $value) {
+				parse_str( $_REQUEST['order'], $slideOrder );
+				foreach ( $slideOrder['slid'] as $key => $value ) {
 					$wpdb->query
 						(
 							$wpdb->prepare
@@ -257,64 +258,67 @@
 			}
 		}	
 
-	function caption_select($Caption_T) { 
+	function caption_select( $Caption_T ) { 
 		
-		$select = "";
-		foreach($Caption_T as $key=>$value){
-			$select .= "<option value=". $value." >". $key ."</option>"; 
+		$select = '';
+		foreach( $Caption_T as $key=>$value ) {
+			$select .= '<option value='. $value.' >'. $key .'</option>'; 
 		}
 		return $select;
+		
 	}	
 
-	function slide_select($Slide_T) { 
+	function slide_select( $Slide_T ) { 
 	 
-		$select = "";
-		foreach($Slide_T as $key=>$value){
-			$select .= "<option value=". $value." >". $key ."</option>"; 
+		$select = '';
+		foreach( $Slide_T as $key=>$value ) {
+			$select .= '<option value='. $value.' >'. $key .'</option>'; 
 		}
 		return $select;
+		
 	}
 
-	function process_image_upload($image, $width, $height) {
+	function process_image_upload( $image, $width, $height ) {
 
 		$temp_image_path = JSSOR_MAIN_UPLOAD_DIR . $image;
 		$temp_image_name = $image;
-		list(, , $temp_image_type) = getimagesize($temp_image_path);
-		if ($temp_image_type === NULL) {
+		list(, , $temp_image_type) = getimagesize( $temp_image_path );
+		if ( $temp_image_type === NULL ) {
 			return false;
 		}
 		$uploaded_image_path = JSSOR_MAIN_UPLOAD_DIR . $temp_image_name;
-		move_uploaded_file($temp_image_path, $uploaded_image_path);
-		$type = explode(".", $image);
-		$thumbnail_image_path = JSSOR_MAIN_THUMB_DIR . preg_replace("{\\.[^\\.]+$}", ".".$type[1], $temp_image_name);
+		move_uploaded_file( $temp_image_path, $uploaded_image_path );
+		$type = explode( '.', $image );
+		$thumbnail_image_path = JSSOR_MAIN_THUMB_DIR . preg_replace( '{\\.[^\\.]+$}', '.'.$type[1], $temp_image_name );
 	 
-		$result = generate_thumbnail($uploaded_image_path, $thumbnail_image_path, $width, $height);
-		return $result ? array($uploaded_image_path, $thumbnail_image_path) : false;
+		$result = generate_thumbnail( $uploaded_image_path, $thumbnail_image_path, $width, $height );
+		return $result ? array( $uploaded_image_path, $thumbnail_image_path ) : false;
+		
 	}
 
-	function generate_thumbnail($source_image_path, $thumbnail_image_path, $imageWidth, $imageHeight) {
+	function generate_thumbnail( $source_image_path, $thumbnail_image_path, $imageWidth, $imageHeight ) {
 
-		list($source_image_width, $source_image_height, $source_image_type) = getimagesize($source_image_path);
+		list( $source_image_width, $source_image_height, $source_image_type ) = getimagesize( $source_image_path );
 		$source_gd_image = false;
-		switch ($source_image_type) {
+		switch ( $source_image_type ) {
 			case IMAGETYPE_GIF:
-				$source_gd_image = imagecreatefromgif($source_image_path);
+				$source_gd_image = imagecreatefromgif( $source_image_path );
 				break;
 			case IMAGETYPE_JPEG:
-				$source_gd_image = imagecreatefromjpeg($source_image_path);
+				$source_gd_image = imagecreatefromjpeg( $source_image_path );
 				break;
 			case IMAGETYPE_PNG:
-				$source_gd_image = imagecreatefrompng($source_image_path);
+				$source_gd_image = imagecreatefrompng( $source_image_path );
 				break;
 		}
-		if ($source_gd_image === false) {
+		if ( $source_gd_image === false ) {
 			return false;
 		}
 		$source_aspect_ratio = $source_image_width / $source_image_height;
-		if ($source_image_width > $source_image_height) {
+		if ( $source_image_width > $source_image_height ) {
 			$real_height = $imageHeight;
 			$real_width = $imageHeight * $source_aspect_ratio;
-		} else if ($source_image_height > $source_image_width) {
+		} else if ( $source_image_height > $source_image_width ) {
 			$real_height = $imageWidth / $source_aspect_ratio;
 			$real_width = $imageWidth;
 		} else {
@@ -322,35 +326,36 @@
 			$real_width = $imageWidth > $imageHeight ? $imageWidth : $imageHeight;
 		}
 
-		$thumbnail_gd_image = imagecreatetruecolor($real_width, $real_height);
+		$thumbnail_gd_image = imagecreatetruecolor( $real_width, $real_height );
 		
-		if(($source_image_type == 1) || ($source_image_type==3)){
+		if ( ( $source_image_type == 1 ) || ( $source_image_type==3 ) ) {
 			imagealphablending($thumbnail_gd_image, false);
-			imagesavealpha($thumbnail_gd_image, true);
+			imagesavealpha( $thumbnail_gd_image, true );
 			$transparent = imagecolorallocatealpha($thumbnail_gd_image, 255, 255, 255, 127);
-			imagecolortransparent($thumbnail_gd_image, $transparent);
-			imagefilledrectangle($thumbnail_gd_image, 0, 0, $real_width, $real_height, $transparent);
+			imagecolortransparent( $thumbnail_gd_image, $transparent );
+			imagefilledrectangle( $thumbnail_gd_image, 0, 0, $real_width, $real_height, $transparent );
 		} else {
-			$bg_color = imagecolorallocate($thumbnail_gd_image, 255, 255, 255);
-			imagefilledrectangle($thumbnail_gd_image, 0, 0, $real_width, $real_height, $bg_color);
+			$bg_color = imagecolorallocate( $thumbnail_gd_image, 255, 255, 255 );
+			imagefilledrectangle( $thumbnail_gd_image, 0, 0, $real_width, $real_height, $bg_color );
 		}
 	
-		imagecopyresampled($thumbnail_gd_image, $source_gd_image, 0, 0, 0, 0, $real_width, $real_height, $source_image_width, $source_image_height);
+		imagecopyresampled( $thumbnail_gd_image, $source_gd_image, 0, 0, 0, 0, $real_width, $real_height, $source_image_width, $source_image_height );
 	
-		switch ($source_image_type) {
+		switch ( $source_image_type ) {
 			case IMAGETYPE_GIF:
 				imagepng($thumbnail_gd_image, $thumbnail_image_path, 9 );
 				break;
 			case IMAGETYPE_JPEG:
-				imagejpeg($thumbnail_gd_image, $thumbnail_image_path, 100);
+				imagejpeg( $thumbnail_gd_image, $thumbnail_image_path, 100 );
 				break;
 			case IMAGETYPE_PNG:
-				imagepng($thumbnail_gd_image, $thumbnail_image_path, 9 );
+				imagepng( $thumbnail_gd_image, $thumbnail_image_path, 9 );
 				break;
 		}
 		
-		imagedestroy($source_gd_image);
-		imagedestroy($thumbnail_gd_image);
+		imagedestroy( $source_gd_image );
+		imagedestroy( $thumbnail_gd_image );
 		return true;
+		
 	}
 ?>
