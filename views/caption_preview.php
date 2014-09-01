@@ -1,4 +1,4 @@
-<style> 
+    <style> 
         .captionOrange, .captionBlack, .captionBlock
         {
             color: #fff;
@@ -12,7 +12,7 @@
             background: #EB5100;
             background-color: rgba(235, 81, 0, 0.6);
         }
-</style>
+    </style>
     <table align="center" border="0" cellspacing="0" cellpadding="0" style="width: 960px; height: 60px;">
         <tr>
             <td style="text-align: center; font-size: 26px;">
