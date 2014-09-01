@@ -1,4 +1,5 @@
 <?php
+	
 	require_once JSSOR_SL_PLUGIN_DIR . '/lib/settings.php';
 	global $wpdb;
 	$Caption_T = $Caption_Transition;
