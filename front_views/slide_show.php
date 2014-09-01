@@ -1,4 +1,5 @@
 <?php
+	
 	$result = array_flip($Caption_Transition);
 	$slides = $wpdb->get_results
 				(
