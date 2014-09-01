@@ -1,4 +1,5 @@
 <?php
+	
 	global	$wpdb;
 
 	$sql = "DROP TABLE " .JssorSliderPlugin::jssor_sliders();
