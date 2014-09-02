@@ -447,7 +447,7 @@
 		</div>
 	</form>
 
-	<script>
+	<script type="text/javascript">
 		var url = "<?php echo JSSOR_SL_PLUGIN_URL ?>";
 		var array_slider_data = [];
 		var array_slider_settings = [];
@@ -626,4 +626,4 @@
 		
 		jQuery("#slider_settings label").tipsy({live: true, delayIn: 500, html: true, gravity: 'e'});
 		
-	</script>	
+	</script>
