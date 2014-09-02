@@ -9,7 +9,8 @@ License URI: www.gnu.org/licenses <br/>
 
 Easy to use WordPress Responsive Slider plugin.
 
-**Demo:** http://phpcentre.net/wordpress-jssor-slider/
+##Demo##
+[Jssor Slider Demo](http://phpcentre.net/wordpress-jssor-slider/)
 
 ## Description ##
 Creating slideshows with WordPress Jssor Slider is fast and easy. Simply uopload images from the admin or drag and drop them into
