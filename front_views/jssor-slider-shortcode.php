@@ -14,7 +14,7 @@
 								global $wpdb;
 								$slider = $wpdb->get_results
 											(
-												"SELECT * FROM " . JssorSliderPlugin::jssor_sliders() . " order by slider_order asc"
+												"SELECT * FROM " . JssorSliderPlugin::jssor_sliders() . " ORDER BY slider_order ASC"
 											);
 						
 								if ( $slider ) :
