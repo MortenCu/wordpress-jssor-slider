@@ -3,12 +3,12 @@
 	global $wpdb;
 	$last_slider_id = $wpdb->get_var
 						(
-							"SELECT slider_id FROM " . JssorSliderPlugin::jssor_sliders() . " order by slider_id desc limit 1"
+							"SELECT slider_id FROM " . JssorSliderPlugin::jssor_sliders() . " ORDER BY slider_id DESC LIMIT 1"
 						);
 	
 	$slider = $wpdb->get_results
 						(
-							"SELECT * FROM " . JssorSliderPlugin::jssor_sliders() . " order by slider_order asc "
+							"SELECT * FROM " . JssorSliderPlugin::jssor_sliders() . " ORDER BY slider_order ASC "
 						);
 	
 ?>
@@ -48,7 +48,7 @@
 																				(
 																					$wpdb->prepare
 																						(
-																							"SELECT count(". JssorSliderPlugin::jssor_sliders() .".slider_id) FROM " . JssorSliderPlugin::jssor_sliders() . " join " . JssorSliderPlugin::jssor_slides() . " on " . JssorSliderPlugin::jssor_sliders() . ".slider_id = " . JssorSliderPlugin::jssor_slides() . ".slider_id where " . JssorSliderPlugin::jssor_sliders() . ".slider_id = %d ",
+																							"SELECT COUNT( ". JssorSliderPlugin::jssor_sliders() .".slider_id ) FROM " . JssorSliderPlugin::jssor_sliders() . " JOIN " . JssorSliderPlugin::jssor_slides() . " ON " . JssorSliderPlugin::jssor_sliders() . ".slider_id = " . JssorSliderPlugin::jssor_slides() . ".slider_id WHERE " . JssorSliderPlugin::jssor_sliders() . ".slider_id = %d ",
 																							$slider[$flag]->slider_id
 																						)
 																				);
