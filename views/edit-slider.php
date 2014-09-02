@@ -73,16 +73,16 @@
 									<a class="btn btn-inverse" href="admin.php?page=jssor_slider"><?php _e( "Back to Sliders", jssor_slider ); ?></a>
 									<button type="submit" class="btn btn-info" style="float:right"><?php _e( "Save Slider", jssor_slider ); ?></button>
 									<div class="separator-doubled"></div>
-									<?php if ( !count($slides ) ) { ?>
+									<?php if ( !count($slides ) ) : ?>
 									<div id="empty_slider_message" class="message red">
 										<span>
 											<strong><?php _e( "Slider empty. Please upload some images", jssor_slider ); ?></strong>
 										</span>
 									</div>
-									<?php }	?>
+									<?php endif; ?>
 									<div id="update_slider_success_message" class="message green" style="display: none;">
 										<span>
-											<strong><?php _e("Slider Saved. Kindly wait for redirection", jssor_slider); ?></strong>
+											<strong><?php _e( "Slider Saved. Kindly wait for redirection", jssor_slider ); ?></strong>
 										</span>
 									</div>
 									<div class="fluid-layout">
@@ -93,16 +93,14 @@
 												</div>
 												<div style="padding:0px;" class="widget-layout-body">
 													<div style="padding:0 15px 0 15px;" class="layout-control-group">
-														<label style="cursor:default;" class="layout-control-label"><?php _e("Slides", jssor_slider); ?></label>
+														<label style="cursor:default;" class="layout-control-label"><?php _e( "Slides", jssor_slider ); ?></label>
 															<div style="float:right;margin-top:5px;"><a style="margin:3px;" class="button button-small" href="admin.php?page=slide_preview" target="_blank">Slide Preview</a><a style="margin:3px;" class="button button-small" href="admin.php?page=caption_preview" target="_blank">Caption Preview</a></div>
 													</div>
 													<input type="hidden" id="hidden_slider_id" value="<?php echo $slider_id; ?>"></input>
 													<div style="margin:0 15px 0 15px;"class="separator-doubled"></div>
 													<table id="slide_table" style="width:100%">
 														<tbody>
-															<?php
-															for ( $flag = 0; $flag < count($slides); $flag++ ) {
-															?>
+															<?php for ( $flag = 0; $flag < count($slides); $flag++ ) : ?>
 															<tr class="slide" id="slid_<?php echo $slides[$flag]->slide_id; ?>">
 																<td style="width:152px;" class="col-1">
 																	<div name="slide_<?php echo $slides[$flag]->slide_id; ?>" class='thumb' style='background-image: url(<?php echo stripcslashes(JSSOR_SL_THUMB_SMALL_URL . $slides[$flag]->thumbnail_url); ?>)'>
@@ -128,26 +126,22 @@
 																					<label class="trans_label">Caption In</label>
 																					<select id="cap_trans_in" name="cap_trans_in" >
 																						<?php
-																							foreach ( $Caption_Transition as $key=>$value ) {
+																							foreach ( $Caption_Transition as $key=>$value ) :
 																								$selected = ( $slides[$flag]->caption_in== $value ) ? 'selected="selected"' : '';
 																						?>
 																						<option value="<?php echo $value ?>" <?php echo $selected ?> ><?php echo $key ?></option>
-																						<?php
-																							}
-																						?>
+																						<?php endforeach; ?>
 																					</select>
 																				</div>
 																				<div class="caption_trans" >
 																					<label class="trans_label" >Caption Out</label>
 																					<select id="cap_trans_out" name="cap_trans_out">
 																						<?php
-																							foreach ( $Caption_Transition as $key=>$value ) {
+																							foreach ( $Caption_Transition as $key=>$value ) :
 																								$selected = ( $slides[$flag]->caption_out == $value ) ? 'selected="selected"' : '';
 																						?>
 																						<option value="<?php echo $value ?>" <?php echo $selected ?> ><?php echo $key ?></option>
-																						<?php
-																							}
-																						?>
+																						<?php endforeach; ?>
 																					</select>
 																				</div>
 																			</div>						
@@ -156,26 +150,22 @@
 																					<label class="trans_label">Desc In</label>
 																					<select id="desc_trans_in" name="desc_trans_in">
 																						<?php
-																							foreach ( $Caption_Transition as $key=>$value ) {
+																							foreach ( $Caption_Transition as $key=>$value ) :
 																								$selected = ( $slides[$flag]->description_in == $value ) ? 'selected="selected"' : '';
 																						?>
 																						<option value="<?php echo $value ?>" <?php echo $selected ?> ><?php echo $key ?></option>
-																						<?php
-																							}
-																						?>
+																						<?php endforeach; ?>
 																					</select>
 																				</div>
 																				<div class="desc_trans">
 																					<label class="trans_label" >Desc Out</label>
 																					<select id="desc_trans_out" name="desc_trans_out">
 																						<?php
-																							foreach ( $Caption_Transition as $key=>$value ) {
+																							foreach ( $Caption_Transition as $key=>$value ) :
 																								$selected = ( $slides[$flag]->description_out == $value ) ? 'selected="selected"' : '';
 																						?>
 																						<option value="<?php echo $value ?>" <?php echo $selected ?> ><?php echo $key ?></option>
-																						<?php
-																							}
-																						?>
+																						<?php endforeach; ?>
 																					</select>
 																				</div>
 																			</div>
@@ -183,22 +173,18 @@
 																				<label class="trans_label">Slide</label>
 																				<select style="width:77%;" id="slide_trans" name="slide_trans">
 																					<?php
-																						foreach ( $Slide_Transition as $key=>$value ) {
+																						foreach ( $Slide_Transition as $key=>$value ) :
 																							$selected = ( $slides[$flag]->slide_trans == $value ) ? 'selected="selected"' : '';
 																					?>
 																					<option value="<?php echo $value ?>" <?php echo $selected ?> ><?php echo $key ?></option>
-																					<?php
-																						}
-																					?>
+																					<?php endforeach; ?>
 																				</select>
 																			</div>
 																		</div>	
 																	</div>
 																</td>
 															</tr>
-															<?php
-															}	 
-															?>
+															<?php endfor; ?>
 														</tbody>
 													</table>
 												</div>	
@@ -256,7 +242,7 @@
 													</div>
 													<div class="widget-layout-body">
 														<div class="layout-control-group">
-															<label class="layout-control-label" title="Transition between slides automatically"><?php _e("AutoPlay", jssor_slider); ?> </label>
+															<label class="layout-control-label" title="Transition between slides automatically"><?php _e( "AutoPlay", jssor_slider ); ?> </label>
 															<div class="layout-controls-checkbox">
 																<?php
 																	$checked = ( $settings[auto_play] == 1 ) ? 'checked="checked"' : '';		
@@ -267,7 +253,7 @@
 													</div>
 													<div class="widget-layout-body">
 														<div class="layout-control-group">
-															<label	class="layout-control-label" title="Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing" ><?php _e("Autoplay Interval", jssor_slider); ?> </label>
+															<label	class="layout-control-label" title="Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing" ><?php _e( "Autoplay Interval", jssor_slider ); ?> </label>
 															<div style="margin-left:70px;" class="layout-controls">
 																<input type="number" min="0" max="9999" class="layout-span5" id="slider_width" name="slider_width"
 																placeholder="3000" value="<?php echo $settings[auto_interval]; ?>"/>
@@ -277,7 +263,7 @@
 													</div>
 													<div class="widget-layout-body">
 														<div class="layout-control-group">
-															<label	class="layout-control-label" title="Steps to go for each navigation request (this options applys only when slideshow is disabled)"><?php _e("Autoplay Steps", jssor_slider); ?></label>
+															<label	class="layout-control-label" title="Steps to go for each navigation request (this options applys only when slideshow is disabled)"><?php _e( "Autoplay Steps", jssor_slider ); ?></label>
 															<div style="margin-left:70px;" class="layout-controls">
 																<input	type="number" min="0" max="9999" class="layout-span5" id="slider_width" name="slider_width"
 																placeholder="1" value="<?php echo $settings[auto_steps]; ?>"/>
@@ -287,17 +273,15 @@
 													</div>
 													<div class="widget-layout-body">
 														<div class="layout-control-group">
-															<label	class="layout-control-label" title="Orientation to play slide (for auto play and arrow navigation)"><?php _e("Play Orientation", jssor_slider); ?> </label>
+															<label	class="layout-control-label" title="Orientation to play slide (for auto play and arrow navigation)"><?php _e( "Play Orientation", jssor_slider ); ?> </label>
 															<div style="margin-left:70px;" class="layout-controls">
 																<select id="play_orientation" class="layout-span9" name="play_orientation" >
 																	<?php
-																		foreach ( $PlayOrientation as $key=>$value ) {
+																		foreach ( $PlayOrientation as $key=>$value ) :
 																			$selected = ( $settings[play_orient] == $key ) ? 'selected="selected"' : '';
 																	?>
 																	<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
-																	<?php
-																		}
-																	?>
+																	<?php endforeach; ?>
 																</select>	 
 															</div>
 														</div>
@@ -331,13 +315,11 @@
 																<div style="margin-left:70px;" class="layout-controls">
 																	<select id="slider_arrow_skin" class="layout-span9" name="slider_arrow_skin">
 																		<?php
-																			foreach ( $ArrowSkin as $key=>$value ) {
+																			foreach ( $ArrowSkin as $key=>$value ) :
 																				$selected = ( $settings[arrow_skin] == $key ) ? 'selected="selected"' : '';
 																		?>
 																		<option value="<?php echo $key ?>" <?php echo $selected ?>><?php echo $value ?></option>
-																		<?php
-																			}
-																		?> 
+																		<?php endforeach; ?> 
 																	</select>	 
 																</div>
 															</div>
@@ -348,13 +330,11 @@
 																<div style="margin-left:70px;" class="layout-controls">
 																	<select id="slider_arrow_show" class="layout-span10" name="slider_arrow_show">
 																		<?php
-																			foreach ( $ShowAction as $key=>$value ) {
+																			foreach ( $ShowAction as $key=>$value ) :
 																				$selected = ( $settings[arrow_show] == $key ) ? 'selected="selected"' : '';
 																		?>
 																		<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
-																		<?php
-																			}
-																		?>
+																		<?php endforeach; ?>
 																	</select>	 
 																</div>
 															</div>
@@ -378,13 +358,11 @@
 																<div style="margin-left:70px;" class="layout-controls">
 																	<select id="slider_bullet_skin" class="layout-span9" name="slider_bullet_skin">
 																		<?php
-																			foreach ( $BulletSkin as $key=>$value ) {
+																			foreach ( $BulletSkin as $key=>$value ) :
 																				$selected = ( $settings[bullet_skin] == $key ) ? 'selected="selected"' : '';
 																		?>
 																		<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
-																		<?php
-																			}
-																		?> 
+																		<?php endforeach; ?> 
 																	</select>	 
 																</div>
 															</div>
@@ -395,13 +373,11 @@
 																<div style="margin-left:70px;" class="layout-controls">
 																	<select id="slider_bullet_show" class="layout-span10" name="slider_bullet_show">
 																		<?php
-																			foreach ( $ShowAction as $key=>$value ) {
+																			foreach ( $ShowAction as $key=>$value ) :
 																				$selected = ( $settings[bullet_show] == $key ) ? 'selected="selected"' : '';
 																		?>
 																			<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
-																		<?php
-																			}
-																		?>
+																		<?php endforeach; ?>
 																	</select>	 
 																</div>
 															</div>
@@ -412,13 +388,11 @@
 																<div style="margin-left:70px;" class="layout-controls">
 																	<select id="slider_bullet_action" class="layout-span9" name="slider_bullet_action">
 																		<?php
-																			foreach ($BulletAction as $key=>$value){
+																			foreach ( $BulletAction as $key=>$value ) :
 																				$selected = ( $settings[bullet_action] == $key ) ? 'selected="selected"' : '';
 																		?>
 																		<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
-																		<?php
-																			}
-																		?>		
+																		<?php endforeach; ?>		
 																	</select>	 
 																</div>
 															</div>
@@ -451,13 +425,11 @@
 																<div style="margin-left:70px;" class="layout-controls">
 																<select id="slider_swipe" class="layout-span9" name="slider_swipe">
 																	<?php
-																		foreach ( $SwipeOptions as $key=>$value ) {
+																		foreach ( $SwipeOptions as $key=>$value ) :
 																			$selected = ( $settings[swipe] == $key ) ? 'selected="selected"' : '';
 																	?>
 																	<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
-																	<?php
-																		}
-																	?>
+																	<?php endforeach; ?>
 																</select>	 
 															</div>
 														</div>
