@@ -20,19 +20,19 @@
 	
 	
 	
-	if ( count( $wpdb->get_var( "SHOW TABLES LIKE '" .JssorSliderPlugin::jssor_sliders() . "'" ) ) == 0 ) {
+	if ( count( $wpdb->get_var( "SHOW TABLES LIKE '" . JssorSliderPlugin::jssor_sliders() . "'" ) ) == 0 ) {
 		
 		create_table_sliders();
 	}
 	
-	if ( count( $wpdb->get_var( "SHOW TABLES LIKE '" .JssorSliderPlugin::jssor_slides() . "'" ) ) == 0 ) {
+	if ( count( $wpdb->get_var( "SHOW TABLES LIKE '" . JssorSliderPlugin::jssor_slides() . "'" ) ) == 0 ) {
 		
 		create_table_slides();
 	}
 
 	function create_table_sliders(){
 		
-		$sql = "CREATE TABLE " .JssorSliderPlugin::jssor_sliders() . "(
+		$sql = "CREATE TABLE " . JssorSliderPlugin::jssor_sliders() . "(
 					slider_id INTEGER(10)	UNSIGNED NOT NULL AUTO_INCREMENT,
 					slider_name	VARCHAR(100),
 					author	VARCHAR(100),
@@ -48,7 +48,7 @@
 	
 	function create_table_slides(){
 		
-		$sql = "CREATE TABLE " .JssorSliderPlugin::jssor_slides() . "(
+		$sql = "CREATE TABLE " . JssorSliderPlugin::jssor_slides() . "(
 					slide_id INTEGER(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 					slider_id INTEGER(10) UNSIGNED NOT NULL,
 					title TEXT,
