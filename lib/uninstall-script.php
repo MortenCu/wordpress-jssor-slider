@@ -2,10 +2,10 @@
 	
 	global	$wpdb;
 
-	$sql = "DROP TABLE " .JssorSliderPlugin::jssor_sliders();
+	$sql = "DROP TABLE " . JssorSliderPlugin::jssor_sliders();
 	$wpdb->query( $sql );
 
-	$sql = "DROP TABLE " .JssorSliderPlugin::jssor_slides();
+	$sql = "DROP TABLE " . JssorSliderPlugin::jssor_slides();
 	$wpdb->query( $sql );
 
 	/* delete folder */
