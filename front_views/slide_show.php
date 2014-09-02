@@ -5,7 +5,7 @@
 				(
 					$wpdb->prepare
 						(
-							"SELECT * FROM " .JssorSliderPlugin::jssor_slides() . " where slider_id = %d order by sorting_order asc ",
+							"SELECT * FROM " .JssorSliderPlugin::jssor_slides() . " WHERE slider_id = %d order by sorting_order asc ",
 							$slider_id
 						)
 				);
@@ -14,7 +14,7 @@
 				(
 					$wpdb->prepare
 						(
-							"SELECT * FROM " .JssorSliderPlugin::jssor_sliders() . " where slider_id = %d",
+							"SELECT * FROM " .JssorSliderPlugin::jssor_sliders() . " WHERE slider_id = %d",
 							$slider_id
 						)
 				);
@@ -132,7 +132,6 @@
 		});
 	</script>
 
-	
 	<div id="slider_container_<?php echo $slider_id; ?>" style="margin:10px auto;position: relative; width:<?php echo $sliderW; ?>px; height:<?php echo $sliderH; ?>px;">
 		<!-- Slides Container -->
 		<div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width:<?php echo $sliderW; ?>px; height:<?php echo $sliderH; ?>px; overflow: hidden;">
