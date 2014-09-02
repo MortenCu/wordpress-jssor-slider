@@ -18,7 +18,7 @@
 				<div id="advanced" class="meta-box-sortables">
 					<div id="jssor_slider_get_started" class="postbox" >
 						<div class="handlediv" data-target="#ux_dashboard" title="Click to toggle" data-toggle="collapse"><br></div>
-						<h3 class="hndle"><span><?php _e("Dashboard", jssor_slider); ?></span></h3>
+						<h3 class="hndle"><span><?php _e( "Dashboard", jssor_slider ); ?></span></h3>
 						<div class="inside">
 							<div id="ux_dashboard" class="jssor_slider_layout">
 								<a class="btn btn-info" href="admin.php?page=save_slider&slider_id=<?php echo count($last_slider_id) == 0 ? 1 : $last_slider_id + 1; ?>"><?php _e("Add New Slider", jssor_slider);?></a>
@@ -42,16 +42,16 @@
 													</thead>
 													<tbody>
 														<?php
-														for($flag=0; $flag <count($slider); $flag++){
+															for ( $flag=0; $flag <count($slider); $flag++ ) :
 															
-															$count_slide = $wpdb->get_var
-																			(
-																				$wpdb->prepare
-																					(
-																						"SELECT count(".JssorSliderPlugin::jssor_sliders().".slider_id) FROM ".JssorSliderPlugin::jssor_sliders()." join ".JssorSliderPlugin::jssor_slides()." on ".JssorSliderPlugin::jssor_sliders().".slider_id =	".JssorSliderPlugin::jssor_slides().".slider_id where ".JssorSliderPlugin::jssor_sliders().".slider_id = %d ",
-																						$slider[$flag]->slider_id
-																					)
-																			);
+																$count_slide = $wpdb->get_var
+																				(
+																					$wpdb->prepare
+																						(
+																							"SELECT count(".JssorSliderPlugin::jssor_sliders().".slider_id) FROM ".JssorSliderPlugin::jssor_sliders()." join ".JssorSliderPlugin::jssor_slides()." on ".JssorSliderPlugin::jssor_sliders().".slider_id =	".JssorSliderPlugin::jssor_slides().".slider_id where ".JssorSliderPlugin::jssor_sliders().".slider_id = %d ",
+																							$slider[$flag]->slider_id
+																						)
+																				);
 														?>
 														<tr>
 															<td style="padding-top:20px;"><a href="admin.php?page=save_slider&slider_id=<?php echo $slider[$flag]->slider_id;?>""><?php echo stripcslashes( htmlspecialchars_decode( $slider[$flag] -> slider_name ) );?></a></td>
@@ -64,9 +64,7 @@
 																</a>	
 															</td>
 														</tr>
-														<?php
-														}
-														?>														
+														<?php endfor; ?>														
 													</tbody>
 												</table>		
 											</div>
@@ -80,7 +78,6 @@
 			</div>
 		</div>			
 	</div>
-
 
 	<script type="text/javascript">
 		jQuery("#data-table-slider .hovertip").tipsy({live: true, delayIn: 500, html: true, gravity: 'e'});
