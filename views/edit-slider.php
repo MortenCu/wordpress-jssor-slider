@@ -1,6 +1,6 @@
 <?php
 	
-	global $wpdb;$current_user;
+	global $wpdb,$current_user;
 	include_once JSSOR_SL_PLUGIN_DIR . '/lib/settings.php';
 	$slider_id = intval( $_REQUEST["slider_id"] );
 	
@@ -8,7 +8,7 @@
 						(
 							$wpdb->prepare
 								(
-									"SELECT slider_id FROM " .JssorSliderPlugin::jssor_sliders(). " where slider_id= %d",
+									"SELECT slider_id FROM " . JssorSliderPlugin::jssor_sliders() . " where slider_id= %d",
 									$slider_id
 								)
 						);
@@ -19,7 +19,7 @@
 		(
 			$wpdb->prepare
 			(
-				"INSERT INTO " .JssorSliderPlugin::jssor_sliders() . "(slider_id, slider_name, slider_date, author, slider_order)
+				"INSERT INTO " . JssorSliderPlugin::jssor_sliders() . " (slider_id, slider_name, slider_date, author, slider_order)
 				VALUES(%d, %s, CURDATE(), %s, %d)",
 				$slider_id,
 				"Untitled Slider",
@@ -32,7 +32,7 @@
 					(
 						$wpdb->prepare
 							(
-								"SELECT * FROM " .JssorSliderPlugin::jssor_sliders() . " where slider_id = %d",
+								"SELECT * FROM " . JssorSliderPlugin::jssor_sliders() . " where slider_id = %d",
 								$slider_id
 							)
 					);
@@ -55,7 +55,7 @@
 				(
 					$wpdb->prepare
 						(
-							"SELECT * FROM " .JssorSliderPlugin::jssor_slides() . " WHERE slider_id = %d order by sorting_order asc ",
+							"SELECT * FROM " . JssorSliderPlugin::jssor_slides() . " where slider_id = %d order by sorting_order asc",
 							$slider_id
 					)
 				);
