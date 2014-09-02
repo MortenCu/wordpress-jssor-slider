@@ -10,31 +10,27 @@
 				<div class="layout-control-group" id="ux_select_album" style="display: block;">
 					<select id="add_slider_id" class="layout-span5">
 						<option value=""> <?php _e( "Select a Slider", jssor_slider ); ?></option>
-						<?php
-						global $wpdb;
-						$slider = $wpdb->get_results
-									(
-										"SELECT * FROM ".JssorSliderPlugin::jssor_sliders()." order by slider_order asc "
-									);
+							<?php
+								global $wpdb;
+								$slider = $wpdb->get_results
+											(
+												"SELECT * FROM " . JssorSliderPlugin::jssor_sliders() . " order by slider_order asc"
+											);
 						
-						if( $slider ) {
-							for ( $flag = 0; $flag < count($slider); $flag++ ) {
-						?>
-							<option value="<?php echo intval( $slider[$flag]->slider_id ); ?>"><?php echo esc_html( $slider[$flag]->slider_name ) ?></option>
-						<?php
-							}
-						} else {
-						?>
-							<option value=""><?php _e( 'No Slider Found',jssor_slider ); ?><option>
-						<?php
-						}
-						?>					
+								if ( $slider ) :
+									for ( $flag = 0; $flag < count($slider); $flag++ ) :
+							?>
+								<option value="<?php echo intval( $slider[$flag]->slider_id ); ?>"><?php echo esc_html( $slider[$flag]->slider_name ) ?></option>
+							<?php endfor; else : ?>
+								<option value=""><?php _e( 'No Slider Found', jssor_slider ); ?><option>
+							<?php endif; ?>					
 					</select>
 					<button style="height:30px;" class='button primary' id='insertJssorSlider'>Insert Slideshow</button>
 				</div>						
 			</div>
 		</div>
 	</div>
+	
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			jQuery('#insertJssorSlider').on('click', function() {
