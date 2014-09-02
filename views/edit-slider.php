@@ -55,7 +55,7 @@
 				(
 					$wpdb->prepare
 						(
-							"SELECT * FROM " . JssorSliderPlugin::jssor_slides() . " WHERE slider_id = %d order by sorting_order asc",
+							"SELECT * FROM " . JssorSliderPlugin::jssor_slides() . " WHERE slider_id = %d ORDER BY sorting_order ASC",
 							$slider_id
 					)
 				);
