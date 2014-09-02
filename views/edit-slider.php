@@ -8,7 +8,7 @@
 						(
 							$wpdb->prepare
 								(
-									"SELECT slider_id FROM " . JssorSliderPlugin::jssor_sliders() . " where slider_id= %d",
+									"SELECT slider_id FROM " . JssorSliderPlugin::jssor_sliders() . " WHERE slider_id= %d",
 									$slider_id
 								)
 						);
@@ -32,7 +32,7 @@
 					(
 						$wpdb->prepare
 							(
-								"SELECT * FROM " . JssorSliderPlugin::jssor_sliders() . " where slider_id = %d",
+								"SELECT * FROM " . JssorSliderPlugin::jssor_sliders() . " WHERE slider_id = %d",
 								$slider_id
 							)
 					);
@@ -43,7 +43,7 @@
 					(
 						$wpdb->prepare
 							(
-								"SELECT * FROM " .JssorSliderPlugin::jssor_sliders() . " where slider_id = %d",
+								"SELECT * FROM " .JssorSliderPlugin::jssor_sliders() . " WHERE slider_id = %d",
 								$slider_id
 							)
 					);
@@ -55,7 +55,7 @@
 				(
 					$wpdb->prepare
 						(
-							"SELECT * FROM " . JssorSliderPlugin::jssor_slides() . " where slider_id = %d order by sorting_order asc",
+							"SELECT * FROM " . JssorSliderPlugin::jssor_slides() . " WHERE slider_id = %d order by sorting_order asc",
 							$slider_id
 					)
 				);
