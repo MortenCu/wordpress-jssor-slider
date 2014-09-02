@@ -5,7 +5,7 @@
 				(
 					$wpdb->prepare
 						(
-							"SELECT * FROM " .JssorSliderPlugin::jssor_slides() . " WHERE slider_id = %d order by sorting_order asc ",
+							"SELECT * FROM " .JssorSliderPlugin::jssor_slides() . " where slider_id = %d order by sorting_order asc ",
 							$slider_id
 						)
 				);
@@ -117,7 +117,7 @@
 				}
 			};
 			var jssor_slider<?php echo $slider_id; ?> = new $JssorSlider$("slider_container_<?php echo $slider_id; ?>", options);
-				<?php if($responsive) { ?>
+				<?php if ( $responsive ) : ?>
 				function ScaleSlider() {
 					var parentWidth = jssor_slider<?php echo $slider_id; ?>.$Elmt.parentNode.clientWidth;
 					if (parentWidth)
@@ -128,7 +128,7 @@
 				ScaleSlider();
 				if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
 					jQuery(window).bind('resize', ScaleSlider);
-				}<?php } ?>
+				}<?php endif; ?>
 		});
 	</script>
 
@@ -137,41 +137,32 @@
 		<!-- Slides Container -->
 		<div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width:<?php echo $sliderW; ?>px; height:<?php echo $sliderH; ?>px; overflow: hidden;">
 			<!-- Slide -->
-			<?php
-			for ( $flag = 0;$flag < count($slides); $flag++ ) {
-			
-			?>	
+			<?php for ( $flag = 0;$flag < count($slides); $flag++ ) : ?>	
 			<div>
 				<img u="image" src="<?php echo stripcslashes(JSSOR_SL_THUMB_URL . $slides[$flag]->thumbnail_url); ?>" />
-				<?php if ( $slides[$flag]->title ) { ?>
+				<?php 	if ( $slides[$flag]->title ) : ?>
 				<div u="caption" t="<?php echo $result2[$slides[$flag]->caption_in]; ?>" t2="<?php echo $result2[$slides[$flag]->caption_out]; ?>" style="position: absolute; top: 20px; left: 20px; height: 30px; color: #ffffff; font-size: 20px; line-height: 30px;"><?php echo html_entity_decode( stripcslashes( htmlspecialchars( $slides[$flag]->title ) ) ); ?></div>
-				<?php } 
-				if ( $slides[$flag]->description ) {
+				<?php endif;  
+					if ( $slides[$flag]->description ) :
 				?>
 				<div u="caption" t="<?php echo $result2[$slides[$flag]->description_in]; ?>" t2="<?php echo $result2[$slides[$flag]->description_out]; ?>" style="position: absolute; top: 250px; left: 0px;width: 800px; height: 50px;">
 					<div style="position: absolute; top: 0px; left: 0px; width: <?php echo $sliderW; ?>px; height: 50px;background-color: Black; opacity: 0.5; filter: alpha(opacity=50);"></div>
 					<div style="position: absolute; top: 0px; left: 0px; width: <?php echo $sliderW; ?>px; height: 30px;color: White; font-size: 16px; font-weight: bold; line-height: 30px; text-align: center;">
-					<?php 
-					if ( $slides[$flag]->url ) {
-						echo '<a style="text-decoration:none;" target="_blank" href="' . html_entity_decode( stripcslashes( htmlspecialchars( $slides[$flag]->url) ) ) . '">'. html_entity_decode( stripcslashes( htmlspecialchars( $slides[$flag]->description ) ) ) . ' </a>';
-					} else {
-						echo html_entity_decode( stripcslashes( htmlspecialchars( $slides[$flag]->description ) ) ); 
-					}
-					?>		
+						<?php if ( $slides[$flag]->url ) : ?>
+							<a style="text-decoration:none;" target="_blank" href="<?php echo html_entity_decode( stripcslashes( htmlspecialchars( $slides[$flag]->url ) ) ); ?>"><?php echo html_entity_decode( stripcslashes( htmlspecialchars( $slides[$flag]->description ) ) ); ?></a>
+						<?php else : ?>
+							<?php echo html_entity_decode( stripcslashes( htmlspecialchars( $slides[$flag]->description ) ) ); ?>
+						<?php endif; ?>		
 					</div>
 				</div>
-				<?php 
-				} 
-				?>
+				<?php endif; ?>
 			</div>
 			<!-- Slide -->
-			<?php
-			}
-			?>
+			<?php endfor; ?>
 		</div>
 		
 		<!-- Bullet Navigator Skin Begin -->
-		<?php if ( $use_bullets ) { ?>
+		<?php if ( $use_bullets ) : ?>
 		<style>
 			<?php echo $bulletStyle1; ?>
 		</style>
@@ -181,11 +172,11 @@
 			<!-- bullet navigator item prototype -->
 			<div u="prototype" style="<?php echo $bulletStyle2; ?>"><?php echo $bulletNT; ?></div>
 		</div>
-		<?php } ?>
+		<?php endif; ?>
 		<!-- Bullet Navigator Skin End -->
 		
 		<!-- Arrow Navigator Skin Begin -->
-		<?php if ( $use_arrows ) { ?>
+		<?php if ( $use_arrows ) : ?>
 		<style>
 			<?php echo $arrowSkin; ?>
 		</style>
@@ -193,7 +184,7 @@
 		<span u="arrowleft" class="<?php echo $arrowL; ?>" style="width:<?php echo $arrowWidth; ?>px; height:<?php echo $arrowHeight; ?>px; top: 45%; left: <?php echo $arrowBorder? '0' : '8'?>px;"></span>
 		<!-- Arrow Right -->
 		<span u="arrowright" class="<?php echo $arrowR; ?>" style="width:<?php echo $arrowWidth; ?>px; height:<?php echo $arrowHeight; ?>px; top: 45%; right: <?php echo $arrowBorder? '0' : '8'?>px"></span>
-		<?php } ?>
+		<?php endif; ?>
 		<!-- Arrow Navigator Skin End -->		
 				
 	</div>
