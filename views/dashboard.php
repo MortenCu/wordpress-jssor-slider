@@ -3,12 +3,12 @@
 	global $wpdb;
 	$last_slider_id = $wpdb->get_var
 						(
-							"SELECT slider_id FROM " .JssorSliderPlugin::jssor_sliders(). " order by slider_id desc limit 1"
+							"SELECT slider_id FROM " . JssorSliderPlugin::jssor_sliders() . " order by slider_id desc limit 1"
 						);
 	
 	$slider = $wpdb->get_results
 						(
-							"SELECT * FROM ".JssorSliderPlugin::jssor_sliders()." order by slider_order asc "
+							"SELECT * FROM " . JssorSliderPlugin::jssor_sliders() . " order by slider_order asc "
 						);
 	
 ?>
@@ -48,7 +48,7 @@
 																				(
 																					$wpdb->prepare
 																						(
-																							"SELECT count(".JssorSliderPlugin::jssor_sliders().".slider_id) FROM ".JssorSliderPlugin::jssor_sliders()." join ".JssorSliderPlugin::jssor_slides()." on ".JssorSliderPlugin::jssor_sliders().".slider_id =	".JssorSliderPlugin::jssor_slides().".slider_id where ".JssorSliderPlugin::jssor_sliders().".slider_id = %d ",
+																							"SELECT count(". JssorSliderPlugin::jssor_sliders() .".slider_id) FROM " . JssorSliderPlugin::jssor_sliders() . " join " . JssorSliderPlugin::jssor_slides() . " on " . JssorSliderPlugin::jssor_sliders() . ".slider_id = " . JssorSliderPlugin::jssor_slides() . ".slider_id where " . JssorSliderPlugin::jssor_sliders() . ".slider_id = %d ",
 																							$slider[$flag]->slider_id
 																						)
 																				);
@@ -56,8 +56,8 @@
 														<tr>
 															<td style="padding-top:20px;"><a href="admin.php?page=save_slider&slider_id=<?php echo $slider[$flag]->slider_id;?>""><?php echo stripcslashes( htmlspecialchars_decode( $slider[$flag] -> slider_name ) );?></a></td>
 															<td style="padding-top:20px;"><?php echo $count_slide;?></td>
-															<td style="padding-top:20px;"><?php echo date("d-M-Y", strtotime( $slider[$flag] -> slider_date ) );?></td>
-															<td ><pre>[jssorslider id=<?php echo $slider[$flag]->slider_id; ?>]</pre></td>
+															<td style="padding-top:20px;"><?php echo date("d-M-Y", strtotime( $slider[$flag]->slider_date ) );?></td>
+															<td><pre>[jssorslider id=<?php echo $slider[$flag]->slider_id; ?>]</pre></td>
 															<td style="padding:18px 0 0 40px;">
 																<a class="btn hovertip"	style="cursor: pointer;" title="Delete Slider" onclick="delete_slider(<?php echo $slider[$flag]->slider_id;?>);" >
 																	<i class="icon-trash"></i>
