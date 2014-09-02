@@ -92,7 +92,7 @@
 					(
 						$wpdb->prepare
 							(
-								"INSERT INTO " .JssorSliderPlugin::jssor_slides() . " (slider_id,thumbnail_url,title,description,url,date,slide_name)
+								"INSERT INTO " . JssorSliderPlugin::jssor_slides() . " (slider_id,thumbnail_url,title,description,url,date,slide_name)
 								VALUES(%d,%s,%s,%s,%s,CURDATE(),%s)",
 								$ux_sliderid,
 								$img_gb_path,
@@ -108,7 +108,7 @@
 					(
 						$wpdb->prepare
 							(
-								"UPDATE " .JssorSliderPlugin::jssor_slides() . " SET sorting_order = %d WHERE slide_id = %d",
+								"UPDATE " . JssorSliderPlugin::jssor_slides() . " SET sorting_order = %d WHERE slide_id = %d",
 								$slide_id,
 								$slide_id
 							)
@@ -149,7 +149,7 @@
 					(
 						$wpdb->prepare
 							(
-								"UPDATE " .JssorSliderPlugin::jssor_sliders() . " SET slider_name = %s, slider_settings =%s WHERE slider_id = %d",
+								"UPDATE " . JssorSliderPlugin::jssor_sliders() . " SET slider_name = %s, slider_settings =%s WHERE slider_id = %d",
 								$ux_edit_slider_name,
 								$sliderSettings2,
 								$sliderId
@@ -166,7 +166,7 @@
 						(
 							$wpdb->prepare
 								(
-									"UPDATE " .JssorSliderPlugin::jssor_slides() . " SET title = %s, description = %s, url = %s, caption_in = %s, caption_out = %s, description_in = %s, description_out = %s ,slide_trans = %s, date = CURDATE() WHERE slide_id = %d",
+									"UPDATE " . JssorSliderPlugin::jssor_slides() . " SET title = %s, description = %s, url = %s, caption_in = %s, caption_out = %s, description_in = %s, description_out = %s ,slide_trans = %s, date = CURDATE() WHERE slide_id = %d",
 									htmlspecialchars($field[1]),
 									htmlspecialchars($field[2]),
 									$field[3],
@@ -189,7 +189,7 @@
 								(
 									$wpdb->prepare
 										(
-											"SELECT thumbnail_url FROM " .JssorSliderPlugin::jssor_slides(). " WHERE slide_id= %d",
+											"SELECT thumbnail_url FROM " . JssorSliderPlugin::jssor_slides() . " WHERE slide_id= %d",
 											$slideId
 										)
 								);
@@ -197,7 +197,7 @@
 					(
 						$wpdb->prepare
 							(
-								"DELETE FROM " .JssorSliderPlugin::jssor_slides() . " WHERE slide_id = %d",
+								"DELETE FROM " . JssorSliderPlugin::jssor_slides() . " WHERE slide_id = %d",
 								$slideId
 							)
 					);
@@ -213,7 +213,7 @@
 							(
 								$wpdb->prepare
 									(
-										"SELECT * FROM " .JssorSliderPlugin::jssor_slides() . " WHERE slider_id = %d order by sorting_order asc ",
+										"SELECT * FROM " . JssorSliderPlugin::jssor_slides() . " WHERE slider_id = %d order by sorting_order asc ",
 										$slider_id
 									)
 							);
@@ -227,7 +227,7 @@
 					(
 						$wpdb->prepare
 							(
-								"DELETE FROM " .JssorSliderPlugin::jssor_slides() . " WHERE slider_id = %d",
+								"DELETE FROM " . JssorSliderPlugin::jssor_slides() . " WHERE slider_id = %d",
 								$slider_id
 							)
 					);
@@ -236,7 +236,7 @@
 					(
 						$wpdb->prepare
 							(
-								"DELETE FROM " .JssorSliderPlugin::jssor_sliders() . " WHERE slider_id = %d",
+								"DELETE FROM " . JssorSliderPlugin::jssor_sliders() . " WHERE slider_id = %d",
 								$slider_id
 							)
 					);
@@ -250,7 +250,7 @@
 						(
 							$wpdb->prepare
 								(
-									"UPDATE " .JssorSliderPlugin::jssor_slides() . " SET sorting_order = %d WHERE slide_id = %d",
+									"UPDATE " . JssorSliderPlugin::jssor_slides() . " SET sorting_order = %d WHERE slide_id = %d",
 									$key + 1,
 									$value
 								)
