@@ -1,6 +1,6 @@
 <?php
 	
-	$result = array_flip($Caption_Transition);
+	$result = array_flip( $Caption_Transition );
 	$slides = $wpdb->get_results
 				(
 					$wpdb->prepare
@@ -59,8 +59,13 @@
 
 	$slide_trans = JssorSliderHelper::getslide_trans( $slides );
 
-	$caption_trans = JssorSliderHelper::getcaption_trans( $slides, $result );
-		
+	$captionIn_trans = JssorSliderHelper::getcaption_trans( $slides, $result, $string_id = 'caption_in' );
+	$captionOut_trans = JssorSliderHelper::getcaption_trans( $slides, $result, $string_id = 'caption_out' );
+	$decriptionIn_trans = JssorSliderHelper::getcaption_trans( $slides, $result, $string_id = 'description_in' );
+	$decriptionOut_trans = JssorSliderHelper::getcaption_trans( $slides, $result, $string_id = 'description_out' );
+	
+	$caption_trans = $captionIn_trans.$captionOut_trans.$decriptionIn_trans.$decriptionOut_trans;
+	
 	$result2 = JssorSliderHelper::format_R( $result );
 
 ?>	
