@@ -36,6 +36,7 @@
 	$pauseH = ( $settings[pause_hover] ) ? ( $settings[pause_hover] ):	'1';
 	$responsive = ( $settings[responsive] );
 	$swipe = ( $settings[swipe] ) ? ( $settings[swipe] ) : '0';
+	$descH = $sliderH - 50;
 
 	$use_arrows = $settings[use_arrows];
 	$arrow = $settings[arrow_skin];
@@ -149,7 +150,7 @@
 				<?php endif;  
 					if ( $slides[$flag]->description ) :
 				?>
-				<div u="caption" t="<?php echo $result2[$slides[$flag]->description_in]; ?>" t2="<?php echo $result2[$slides[$flag]->description_out]; ?>" style="position: absolute; top: 250px; left: 0px;width: 800px; height: 50px;">
+				<div u="caption" t="<?php echo $result2[$slides[$flag]->description_in]; ?>" t2="<?php echo $result2[$slides[$flag]->description_out]; ?>" style="position: absolute; top: <?php echo $descH; ?>px; left: 0px;width: 800px; height: 50px;">
 					<div style="position: absolute; top: 0px; left: 0px; width: <?php echo $sliderW; ?>px; height: 50px;background-color: Black; opacity: 0.5; filter: alpha(opacity=50);"></div>
 					<div style="position: absolute; top: 0px; left: 0px; width: <?php echo $sliderW; ?>px; height: 30px;color: White; font-size: 16px; font-weight: bold; line-height: 30px; text-align: center;">
 						<?php if ( $slides[$flag]->url ) : ?>
