@@ -42,46 +42,24 @@ class JssorSliderHelper {
 	}
 	
 	/**
-	 * Return the javascript for the caption transition
+	 * Return the javascript for the caption and description transition
 	 *
 	 * @param array $slides
 	 * @param array $result 
 	 * @return string
 	 */
-	public static function getcaption_trans( $slides,$result ) {
+	public static function getcaption_trans( $slides, $result, $string_id ) {
 	 
 		$string = '';
-		for( $flag = 0; $flag < count($slides) ;$flag++ ) {
-			$trans = $slides[$flag]->caption_in;
+		for( $flag = 0; $flag < count($slides) ; $flag++ ) {
+			$trans = $slides[$flag]->$string_id;
 			if ( ( $trans == 'NULL' ) || ( $trans == NULL ) ) {
 				continue;
 			}
 			$string .= " _CaptionTransitions[\"" . $result[$trans] . "\"]= " . $trans . ";\n";
 		}
 	
-		for ( $flag = 0; $flag < count($slides); $flag++ ) {
-			$trans = $slides[$flag]->caption_out;
-			if ( ( $trans == 'NULL' ) || ( $trans == NULL ) ) {
-				continue;
-			}
-			$string .= " _CaptionTransitions[\"" . $result[$trans] . "\"]= " . $trans . ";\n";
-		}
-	
-		for ( $flag = 0; $flag < count($slides); $flag++ ) {
-			$trans = $slides[$flag]->description_in;
-			if ( ( $trans == 'NULL' ) || ( $trans ==  NULL ) ) {
-				continue;
-			}
-			$string .= " _CaptionTransitions[\"" . $result[$trans] . "\"]= " . $trans . ";\n";
-		}
-	
-		for ( $flag = 0; $flag < count($slides); $flag++ ) {
-			$trans = $slides[$flag]->description_out;
-			if ( ( $trans == 'NULL' ) || ( $trans == NULL ) ) {
-				continue;
-			}
-			$string .= " _CaptionTransitions[\"" . $result[$trans] . "\"]= " . $trans . ";\n";
-		}
+		
 		
 		return $string;
 		
