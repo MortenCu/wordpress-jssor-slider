@@ -2,8 +2,8 @@
 /**
  * Helper class for slide transition,arrow and bullet skin
  */
-
 class JssorSliderHelper {
+	
 	/**
 	 * Return the a formatted $result array
 	 *
@@ -58,9 +58,6 @@ class JssorSliderHelper {
 			}
 			$string .= " _CaptionTransitions[\"" . $result[$trans] . "\"]= " . $trans . ";\n";
 		}
-	
-		
-		
 		return $string;
 		
 	}
