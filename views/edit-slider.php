@@ -1,7 +1,7 @@
 <?php
 	
 	global $wpdb,$current_user;
-	include_once JSSOR_SL_PLUGIN_DIR . '/lib/settings.php';
+	include_once JSSOR_SLIDER_PATH  . '/lib/settings.php';
 	$slider_id = intval( $_REQUEST["slider_id"] );
 	
 	$check_slider_id = $wpdb->get_var
@@ -215,7 +215,7 @@
 															<label	class="layout-control-label" title="Slideshow Width"><?php _e( "Width", jssor_slider ); ?></label>
 															<div style="margin-left:10px;" class="layout-controls">
 																<input	type="number" min="0" max="9999" class="layout-span5" id="slider_width" name="slider_width"
-																placeholder="600" value="<?php echo $settings[slider_width]; ?>"/>
+																placeholder="600" value="<?php echo $settings['slider_width']; ?>"/>
 																<span>px</span>
 															</div>
 														</div>
@@ -225,7 +225,7 @@
 															<label	class="layout-control-label" title="Slideshow Height"><?php _e( "Height", jssor_slider ); ?> </label>
 															<div style="margin-left:10px;" class="layout-controls">
 																<input	type="number" min="0" max="9999" class="layout-span5" id="slider_width" name="slider_width"
-																placeholder="300" value="<?php echo $settings[slider_height]; ?>"/>
+																placeholder="300" value="<?php echo $settings['slider_height']; ?>"/>
 																<span>px</span>
 															</div>
 														</div>
@@ -235,7 +235,7 @@
 															<label class="layout-control-label" title="Duration for Slide in milliseconds"><?php _e( "Duration", jssor_slider ); ?></label>
 															<div style="margin-left:10px;" class="layout-controls">
 																<input type="number" min="0" max="9999" class="layout-span5" id="slider_width" name="slider_width"
-																placeholder="500" value="<?php echo $settings[slide_duration] ; ?>"/>
+																placeholder="500" value="<?php echo $settings['slide_duration'] ; ?>"/>
 																<span>ms</span>
 															</div>
 														</div>
@@ -245,7 +245,7 @@
 															<label class="layout-control-label" title="Transition between slides automatically"><?php _e( "AutoPlay", jssor_slider ); ?> </label>
 															<div class="layout-controls-checkbox">
 																<?php
-																	$checked = ( $settings[auto_play] == 1 ) ? 'checked="checked"' : '';		
+																	$checked = ( $settings['auto_play'] == 1 ) ? 'checked="checked"' : '';		
 																?>
 																<input type="checkbox" name="slider_autoplay" value="1" <?php echo $checked ?> />
 															</div>
@@ -256,7 +256,7 @@
 															<label	class="layout-control-label" title="Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing" ><?php _e( "Autoplay Interval", jssor_slider ); ?> </label>
 															<div style="margin-left:70px;" class="layout-controls">
 																<input type="number" min="0" max="9999" class="layout-span5" id="slider_width" name="slider_width"
-																placeholder="3000" value="<?php echo $settings[auto_interval]; ?>"/>
+																placeholder="3000" value="<?php echo $settings['auto_interval']; ?>"/>
 																<span>ms</span>	
 															</div>
 														</div>
@@ -266,7 +266,7 @@
 															<label	class="layout-control-label" title="Steps to go for each navigation request (this options applys only when slideshow is disabled)"><?php _e( "Autoplay Steps", jssor_slider ); ?></label>
 															<div style="margin-left:70px;" class="layout-controls">
 																<input	type="number" min="0" max="9999" class="layout-span5" id="slider_width" name="slider_width"
-																placeholder="1" value="<?php echo $settings[auto_steps]; ?>"/>
+																placeholder="1" value="<?php echo $settings['auto_steps']; ?>"/>
 																<span>ms</span>	 
 															</div>
 														</div>
@@ -278,7 +278,7 @@
 																<select id="play_orientation" class="layout-span9" name="play_orientation" >
 																	<?php
 																		foreach ( $PlayOrientation as $key=>$value ) :
-																			$selected = ( $settings[play_orient] == $key ) ? 'selected="selected"' : '';
+																			$selected = ( $settings['play_orient'] == $key ) ? 'selected="selected"' : '';
 																	?>
 																	<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
 																	<?php endforeach; ?>
@@ -291,7 +291,7 @@
 															<label class="layout-control-label" title="Whether to pause on mouseover if a slider is auto playing"><?php _e( "PauseHover", jssor_slider ); ?></label>
 															<div class="layout-controls-checkbox">
 																<?php
-																	$checked = ( $settings[pause_hover] == 1 ) ? 'checked="checked"' : '';		
+																	$checked = ( $settings['pause_hover'] == 1 ) ? 'checked="checked"' : '';		
 																?>
 																<input type="checkbox"	name="slider_pausehover" value="1" <?php echo $checked ?> />
 															</div>
@@ -302,7 +302,7 @@
 															<label class="layout-control-label" title="Show the previous/next arrows"><?php _e( "Arrows", jssor_slider ); ?> </label>
 															<div class="layout-controls-checkbox">
 																<?php
-																	$checked = ( $settings[use_arrows] == 1 ) ? 'checked="checked"' : '';		
+																	$checked = ( $settings['use_arrows'] == 1 ) ? 'checked="checked"' : '';		
 																?>
 																<input type="checkbox" onclick="check_arrows();" name="slider_arrows" value="1" <?php echo $checked ?> />
 															</div>
@@ -316,7 +316,7 @@
 																	<select id="slider_arrow_skin" class="layout-span9" name="slider_arrow_skin">
 																		<?php
 																			foreach ( $ArrowSkin as $key=>$value ) :
-																				$selected = ( $settings[arrow_skin] == $key ) ? 'selected="selected"' : '';
+																				$selected = ( $settings['arrow_skin'] == $key ) ? 'selected="selected"' : '';
 																		?>
 																		<option value="<?php echo $key ?>" <?php echo $selected ?>><?php echo $value ?></option>
 																		<?php endforeach; ?> 
@@ -331,7 +331,7 @@
 																	<select id="slider_arrow_show" class="layout-span10" name="slider_arrow_show">
 																		<?php
 																			foreach ( $ShowAction as $key=>$value ) :
-																				$selected = ( $settings[arrow_show] == $key ) ? 'selected="selected"' : '';
+																				$selected = ( $settings['arrow_show'] == $key ) ? 'selected="selected"' : '';
 																		?>
 																		<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
 																		<?php endforeach; ?>
@@ -345,7 +345,7 @@
 															<label class="layout-control-label" title="Show the slide navigational bullets"><?php _e( "Bullets", jssor_slider ); ?> </label>
 															<div class="layout-controls-checkbox">
 																<?php
-																	$checked = ( $settings[use_bullets] == 1 ) ? 'checked="checked"' : '';		
+																	$checked = ( $settings['use_bullets'] == 1 ) ? 'checked="checked"' : '';		
 																?>
 																<input type="checkbox" onclick="check_bullets();" name="slider_bullets" value="1" <?php echo $checked ?>/>		
 															</div>
@@ -359,7 +359,7 @@
 																	<select id="slider_bullet_skin" class="layout-span9" name="slider_bullet_skin">
 																		<?php
 																			foreach ( $BulletSkin as $key=>$value ) :
-																				$selected = ( $settings[bullet_skin] == $key ) ? 'selected="selected"' : '';
+																				$selected = ( $settings['bullet_skin'] == $key ) ? 'selected="selected"' : '';
 																		?>
 																		<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
 																		<?php endforeach; ?> 
@@ -374,7 +374,7 @@
 																	<select id="slider_bullet_show" class="layout-span10" name="slider_bullet_show">
 																		<?php
 																			foreach ( $ShowAction as $key=>$value ) :
-																				$selected = ( $settings[bullet_show] == $key ) ? 'selected="selected"' : '';
+																				$selected = ( $settings['bullet_show'] == $key ) ? 'selected="selected"' : '';
 																		?>
 																			<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
 																		<?php endforeach; ?>
@@ -389,7 +389,7 @@
 																	<select id="slider_bullet_action" class="layout-span9" name="slider_bullet_action">
 																		<?php
 																			foreach ( $BulletAction as $key=>$value ) :
-																				$selected = ( $settings[bullet_action] == $key ) ? 'selected="selected"' : '';
+																				$selected = ( $settings['bullet_action'] == $key ) ? 'selected="selected"' : '';
 																		?>
 																		<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
 																		<?php endforeach; ?>		
@@ -402,7 +402,7 @@
 																<label class="layout-control-label" title="Horizontal spacing between the bullets in pixel"><?php _e( "Bullet Spacing", jssor_slider ); ?></label>
 																<div style="margin-left:70px;" class="layout-controls">
 																	<input type="number" min="0" max="9999" class="layout-span5" id="slider_width" name="slider_width"
-																	placeholder="0" value="<?php echo $settings[bullet_spacing]; ?>"/>
+																	placeholder="0" value="<?php echo $settings['bullet_spacing']; ?>"/>
 																	<span>px</span>	 
 																</div>
 															</div>
@@ -413,7 +413,7 @@
 															<label class="layout-control-label" title="Make slider responsive"><?php _e( "Responsive", jssor_slider ); ?></label>
 															<div class="layout-controls-checkbox">
 																<?php
-																	$checked = ( $settings[responsive] == 1 ) ? 'checked="checked"' : '';		
+																	$checked = ( $settings['responsive'] == 1 ) ? 'checked="checked"' : '';		
 																?>
 																<input type="checkbox"	name="slider_reponsive" value="1" <?php echo $checked ?> />		
 															</div>
@@ -426,7 +426,7 @@
 																<select id="slider_swipe" class="layout-span9" name="slider_swipe">
 																	<?php
 																		foreach ( $SwipeOptions as $key=>$value ) :
-																			$selected = ( $settings[swipe] == $key ) ? 'selected="selected"' : '';
+																			$selected = ( $settings['swipe'] == $key ) ? 'selected="selected"' : '';
 																	?>
 																	<option value="<?php echo $key ?>" <?php echo $selected ?> ><?php echo $value ?></option>
 																	<?php endforeach; ?>
