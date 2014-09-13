@@ -1,6 +1,6 @@
 <?php
 	
-	require_once JSSOR_SL_PLUGIN_DIR . '/lib/settings.php';
+	require_once JSSOR_SLIDER_PATH . '/lib/settings.php';
 	global $wpdb;
 	$Caption_T = $Caption_Transition;
 	$Slide_T = $Slide_Transition;
@@ -263,7 +263,7 @@
 		
 		$select = '';
 		foreach( $Caption_T as $key=>$value ) {
-			$select .= '<option value='. $value.' >'. $key .'</option>'; 
+			$select .= '<option value="'. $value.'">'. $key .'</option>'; 
 		}
 		return $select;
 		
@@ -273,7 +273,7 @@
 	 
 		$select = '';
 		foreach( $Slide_T as $key=>$value ) {
-			$select .= '<option value='. $value.' >'. $key .'</option>'; 
+			$select .= '<option value="'. $value.'">'. $key .'</option>'; 
 		}
 		return $select;
 		
