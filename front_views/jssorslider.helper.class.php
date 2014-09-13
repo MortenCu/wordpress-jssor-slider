@@ -42,7 +42,7 @@ class JssorSliderHelper {
 	}
 	
 	/**
-	 * Return the javascript for the caption and description transition
+	 * Return the javascript for the caption transition
 	 *
 	 * @param array $slides
 	 * @param array $result 
@@ -56,7 +56,7 @@ class JssorSliderHelper {
 			if ( ( $trans == 'NULL' ) || ( $trans == NULL ) ) {
 				continue;
 			}
-			$string .= " _CaptionTransitions[\"" . $result[$trans] . "\"]= " . $trans . ";\n";
+			$string .= "_CaptionTransitions[\"" . $result[$trans] . "\"] = " . $trans . ";\n";
 		}
 		return $string;
 		
