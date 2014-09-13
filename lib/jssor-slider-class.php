@@ -21,7 +21,7 @@ class JssorSliderPlugin {
 	}
 	
 	/**
-	 * get singelton	instance
+	 * get singelton instance
 	 */	
 	public static function getInstance() {
 	
@@ -113,46 +113,46 @@ class JssorSliderPlugin {
 	}
 	
 	/**
-	 * Functions for	replacing table	names
+	 * Functions for replacing table names
 	 */
 	public static function jssor_sliders() {
 		
 		global $wpdb;
-		return	$wpdb->prefix. 'jssor_sliders';
+		return	$wpdb->prefix . 'jssor_sliders';
 		
 	}
 
 	public static function jssor_slides() {
 		
 		global	$wpdb;
-		return	$wpdb->prefix. 'jssor_slides';
+		return	$wpdb->prefix . 'jssor_slides';
 		
 	}
 	
 	/**
-	 * Functions for	creating admin menus
+	 * Functions for creating admin menus
 	 */
 	public function	jssor_slider() {
 		
-		include_once JSSOR_SL_PLUGIN_DIR . '/views/dashboard.php';
+		include_once JSSOR_SLIDER_PATH . '/views/dashboard.php';
 		
 	}
 	
 	public function save_slider() {
 		
-		include_once JSSOR_SL_PLUGIN_DIR . '/views/edit-slider.php';
+		include_once JSSOR_SLIDER_PATH . '/views/edit-slider.php';
 		
 	}
 	
 	public function slide_preview() {
 		
-		include_once JSSOR_SL_PLUGIN_DIR . '/views/slide_preview.php';
+		include_once JSSOR_SLIDER_PATH . '/views/slide_preview.php';
 		
 	}	
 	
 	public function caption_preview() {
 		
-		include_once JSSOR_SL_PLUGIN_DIR . '/views/caption_preview.php';
+		include_once JSSOR_SLIDER_PATH . '/views/caption_preview.php';
 		
 	}
 	
@@ -162,7 +162,7 @@ class JssorSliderPlugin {
 	 */
 	public static function plugin_install_script() {
 		
-		include_once JSSOR_SL_PLUGIN_DIR . '/lib/install-script.php';
+		include_once JSSOR_SLIDER_PATH . '/lib/install-script.php';
 		
 	}
 	
@@ -171,7 +171,7 @@ class JssorSliderPlugin {
 	 */
 	public static function plugin_uninstall_script() {
 		
-		include_once JSSOR_SL_PLUGIN_DIR . '/lib/uninstall-script.php';
+		include_once JSSOR_SLIDER_PATH . '/lib/uninstall-script.php';
 		
 	}
 	
@@ -192,7 +192,7 @@ class JssorSliderPlugin {
 	}
 	
 	/**
-	 * Register admin JavaScript for	prev1_page
+	 * Register admin JavaScript for prev1_page
 	 */
 	public function	enqueue_prev1_js() {
 		
@@ -232,7 +232,7 @@ class JssorSliderPlugin {
 	}
 	
 	/**
-	 * Register ajax	based function to be called on action type
+	 * Register ajax based function to be called on action type
 	 */
 	public function register_ajax_calls() {
 		
@@ -242,14 +242,14 @@ class JssorSliderPlugin {
 					add_action( 'admin_init', 'jssor_slider_library' );
 					function jssor_slider_library() {
 						
-						include_once JSSOR_SL_PLUGIN_DIR . '/lib/add-new-slider-class.php';
+						include_once JSSOR_SLIDER_PATH . '/lib/add-new-slider-class.php';
 					}
 					break;
 				case 'upload_library' :
 					add_action( 'admin_init', 'upload_library' );
 					function upload_library() {
 						
-						include_once JSSOR_SL_PLUGIN_DIR . '/lib/upload.php';
+						include_once JSSOR_SLIDER_PATH . '/lib/upload.php';
 					}
 					break;
 			}
@@ -285,7 +285,7 @@ class JssorSliderPlugin {
 		/* Only	run in	post/page creation and edit screens */
 		if ( in_array( $pagenow, array( 'post.php', 'page.php', 'post-new.php', 'post-edit.php' ) ) ) {
 			
-			require_once JSSOR_SL_PLUGIN_DIR . '/front_views/jssor-slider-shortcode.php';
+			require_once JSSOR_SLIDER_PATH . '/front_views/jssor-slider-shortcode.php';
 		}
 	}
 
@@ -307,18 +307,18 @@ class JssorSliderPlugin {
 	}
 	
 	/*
-	 * @return string HTML output of	the shortcode
+	 * @return string HTML output of the shortcode
 	 */
 	public static function extract_shortcode( $slider_id ) {
 	
 		ob_start();
 		global	$wpdb;
 		
-		require	JSSOR_SL_PLUGIN_DIR . '/lib/settings.php';
+		require	JSSOR_SLIDER_PATH . '/lib/settings.php';
 		
-		require_once JSSOR_SL_PLUGIN_DIR . '/front_views/jssorslider.helper.class.php';
+		require_once JSSOR_SLIDER_PATH . '/front_views/jssorslider.helper.class.php';
 	
-		include	JSSOR_SL_PLUGIN_DIR . '/front_views/slide_show.php';
+		include	JSSOR_SLIDER_PATH . '/front_views/slide_show.php';
 	
 		$jssor_slider_output = ob_get_clean();
 		wp_reset_query();
