@@ -5,7 +5,7 @@ include 'front_views/jssorslider.helper.class.php';
 
 class SampleTest extends WP_UnitTestCase {
 	
-	public $slideArray,$captionArray,$captionArray2;
+	public $slideArray,$captionArray1,$captionArray2;
 	
 	function setUp() {
 		
@@ -40,7 +40,7 @@ class SampleTest extends WP_UnitTestCase {
 	function tearDown() {
 	
 		unset( $this->slideArray );
-		unset( $this->captionArray );
+		unset( $this->captionArray1 );
 		unset( $this->captionArray2 );
 		
 	}
@@ -107,10 +107,10 @@ class SampleTest extends WP_UnitTestCase {
      */
 	function testGetcaption_Trans( $stringArray, $expectedResult ) {
 		
-		$originalArray = $this->captionArray;
+		$originalArray1 = $this->captionArray1;
 		$originalArray2 = $this->captionArray2;
 		
-		$result = JssorSliderHelper::getcaption_trans( $originalArray, $originalArray2, $stringArray );
+		$result = JssorSliderHelper::getcaption_trans( $originalArray1, $originalArray2, $stringArray );
 		$this->assertEquals( $result, $expectedResult );
 		
 	}
