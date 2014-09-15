@@ -98,13 +98,13 @@ class SampleTest extends WP_UnitTestCase {
 		
 	}
 	
-    /**
-     * 
-     * @param string $stringArray
-     * @param string $expectedResult 
-     * 
-     * @dataProvider providerTestGetcaption_Trans
-     */
+	/**
+   	 * 
+   	 * @param string $stringArray
+   	 * @param string $expectedResult 
+   	 * 
+   	 * @dataProvider providerTestGetcaption_Trans
+   	 */
 	function testGetcaption_Trans( $stringArray, $expectedResult ) {
 		
 		$originalArray1 = $this->captionArray1;
