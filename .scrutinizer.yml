@@ -1,7 +1,7 @@
 
 tools:
-    external_code_coverage: 
-        timeout: 1200
+    external_code_coverage: true 
+    
 checks:
     php:
         code_rating: true
