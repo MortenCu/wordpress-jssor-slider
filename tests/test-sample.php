@@ -27,7 +27,7 @@ class SampleTest extends WP_UnitTestCase {
 		$init4->description_in = '{JssorEasing.EaseInCubic,Top:JssorEasing.EaseInCubic}';
 		$init4->description_out = '{Opacity:2,During:{Top:[0,.5]},Round:{Left:.3,Top:.5}}';
 		
-		$this->captionArray = array( $init4 );
+		$this->captionArray1 = array( $init4 );
 		
 		$this->captionArray2 = array(
 			'----- Move -----' => 'NULL',
